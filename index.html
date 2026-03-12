@@ -258,7 +258,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 /* ═══ GALLERY ═══ */
 #ov-gallery .modal{max-width:680px}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(90px,27vw,150px),1fr));gap:7px}
-.gal-thumb{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--card2);border:1px solid var(--border)}
+.gal-thumb{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--card2);border:1px solid var(--border)}.gal-ph{width:100%;height:100%}.gal-nophoto{opacity:.72;cursor:default}
 .gal-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
 .gal-thumb:hover img,.gal-thumb:active img{transform:scale(1.08)}
 .gal-ov{position:absolute;inset:0;background:rgba(0,0,0,.58);opacity:0;transition:opacity .2s;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:9px;gap:3px}
@@ -749,7 +749,7 @@ let curBillMeta = null;   // { name, mimeType, size }
 let curMeta  = null;      // { size } for display
 let curMetal = 'Gold';
 let fMetal = 'All', fType = 'All', fLoc = 'All', fPhoto = 'All', fBill = 'All';
-let lbItems  = [], lbIdx  = 0, galFilter = 'All';
+let lbItems  = [], lbIdx  = 0, galFilter = 'All', galPhotoItems = [];
 let driveOn  = false, driveToken = null, driveFileIds = {};
 let gapiOk   = false, tokenClient = null;
 let pwaPrompt = null;
@@ -1498,7 +1498,7 @@ function renderGallery() {
   const photoCount = pics.filter(i=>i.hasPhoto).length;
   document.getElementById('gal-sub').textContent =
     pics.length + ' item' + (pics.length!==1?'s':'') +
-    (photoCount===pics.length ? '' : ' · '+photoCount+' with photo');
+    (photoCount===pics.length ? '<img data-id="'+it.id+'" src="" style="width:100%;height:100%;object-fit:cover;display:block" alt="">' : ' \u00b7 '+photoCount+' with photo');
 
   const gMs = ['All',...[...new Set(all.map(i=>i.metal||'Gold'))]];
   document.getElementById('gal-chips').innerHTML = gMs.map(m =>
@@ -1509,30 +1509,35 @@ function renderGallery() {
 
   if (!pics.length) {
     document.getElementById('gal-grid').innerHTML = '<div class="no-bills">No items yet</div>';
+    galPhotoItems = [];
     return;
   }
+
+  // Build photo-only list for lightbox navigation
+  galPhotoItems = pics.filter(i => i.hasPhoto);
+
   document.getElementById('gal-grid').innerHTML = pics.map(it => {
+    const photoIdx = galPhotoItems.findIndex(x => Number(x.id) === Number(it.id));
     const clickAct = it.hasPhoto
-      ? "openLB("+it.id+")"
+      ? 'openLB('+photoIdx+')'
       : "closeOv('ov-gallery');setTimeout(()=>openItem('"+it.id+"'),200)";
-    return `<div class="gal-item" onclick="${clickAct}" style="${it.hasPhoto?'':' opacity:.72' }">
-      <div class="gal-ph" id="galph-${it.id}">
-        ${it.hasPhoto
-          ? `<div style="width:100%;height:100%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text3)">&#9203;</div>`
-          : `<div style="width:100%;height:100%;background:var(--card2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
-               <span style="font-size:32px">${EMO[it.type]||'&#128141;'}</span>
-               <span style="font-size:10px;color:var(--text3)">No photo · tap to edit</span>
-             </div>`
-        }
-      </div>
-      <div class="gal-name">${esc(it.name)}</div>
-      <div style="display:flex;gap:4px;flex-wrap:wrap;padding:0 5px 5px">
-        <span class="gal-pill">${esc(it.metal||'Gold')}${it.karat?' · '+esc(it.karat):''}</span>
-        ${it.hasPhoto ?'<span class="gal-pill">&#128247;</span>':''}
-        ${(it.hasBill||it.bill)?'<span class="gal-pill">&#128206;</span>':''}
-      </div>
-    </div>`;
+    return '<div class="gal-thumb'+(it.hasPhoto?'':' gal-nophoto')+'" onclick="'+clickAct+'" id="galitem-'+it.id+'">'+
+      '<div class="gal-ph" id="galph-'+it.id+'">'+(it.hasPhoto
+        ? ''
+        : '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px"><span style="font-size:32px">'+(EMO[it.type]||'&#128141;')+'</span><span style="font-size:10px;color:var(--text3)">No photo</span></div>'
+      )+'</div>'+
+      '<div class="gal-ov">'+
+        '<div class="gal-name">'+esc(it.name)+'</div>'+
+        '<div style="display:flex;gap:3px;flex-wrap:wrap">'+
+          '<span class="gal-pill" style="background:var(--acc2);color:var(--acc)">'+esc(it.metal||'Gold')+(it.karat?' · '+esc(it.karat):'')+'</span>'+
+          (it.hasPhoto ? '<span class="gal-pill" style="background:rgba(255,255,255,.1);color:#ccc">&#128247;</span>' : '')+
+          ((it.hasBill||it.bill) ? '<span class="gal-pill" style="background:rgba(255,255,255,.1);color:#ccc">&#128206;</span>' : '')+
+        '</div>'+
+      '</div>'+
+    '</div>';
   }).join('');
+
+
   loadGalleryPhotos(pics, galFilter);
 }
 
@@ -1542,27 +1547,26 @@ async function loadGalleryPhotos(pics, filterAtLoad) {
     if (galFilter !== filterAtLoad) break;
     const el = document.getElementById('galph-'+it.id);
     if (!el) continue;
+    const img = el.querySelector('img[data-id]');
+    if (!img) continue;
     try {
       let url = photoURLCache[it.id];
       if (!url && db) {
         const blob = await dbGet('photos', it.id);
         if (blob) { url = URL.createObjectURL(blob); photoURLCache[it.id] = url; }
       }
-      if (url && document.getElementById('galph-'+it.id)) {
-        el.innerHTML = `<img src="${url}" style="width:100%;height:100%;object-fit:cover">`;
-      }
+      if (url) img.src = url;
     } catch {}
   }
 }
 
-function galF(v) { galFilter=v; renderGallery(); }
+function galF(v) { galFilter = v; renderGallery(); }
 
-async function openLB(itemId) {
-  const filtered = items.filter(i => galFilter==='All' || (i.metal||'Gold')===galFilter);
-  lbItems = filtered.filter(i => i.hasPhoto);
+// openLB: idx is position in galPhotoItems (photo-only list)
+async function openLB(idx) {
+  lbItems = galPhotoItems;
   if (!lbItems.length) return;
-  const pos = lbItems.findIndex(i => i.id === Number(itemId));
-  lbIdx = pos >= 0 ? pos : 0;
+  lbIdx = (idx >= 0 && idx < lbItems.length) ? idx : 0;
   await showLB();
   openOv('lightbox');
 }
