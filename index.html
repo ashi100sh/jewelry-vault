@@ -587,6 +587,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     <div id="lb-name"></div>
     <div id="lb-meta"></div>
     <div id="lb-loc"></div>
+    <div id="lb-date"></div>
   </div>
   <button id="lb-dl" onclick="lbDl()">&#8595; Save Photo</button>
 </div>
@@ -1585,7 +1586,7 @@ async function showLB() {
   document.getElementById('lb-name').textContent  = it.name || '';
   document.getElementById('lb-meta').textContent  = [it.metal, it.karat, it.wt ? it.wt+'g' : ''].filter(Boolean).join(' · ');
   document.getElementById('lb-loc').textContent   = it.loc  || '';
-  document.getElementById('lb-info').textContent  = it.date || '';
+  document.getElementById('lb-date').textContent  = it.date || '';
   document.getElementById('lb-counter').textContent = (lbIdx+1) + ' / ' + lbItems.length;
   document.getElementById('lb-prev').style.opacity = lbIdx===0 ? '0.3':'1';
   document.getElementById('lb-next').style.opacity = lbIdx===lbItems.length-1 ? '0.3':'1';
