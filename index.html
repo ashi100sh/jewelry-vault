@@ -12,9 +12,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
 <style>
-/* THEMES */
 :root,[data-theme="dark"]{
   --bg:#0C0B08;--bg2:#131108;--card:#1A1810;--card2:#211F14;
   --border:#2E2A18;--border2:#3A3520;--input:#0F0E0A;
@@ -48,8 +46,6 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{height:100%;-webkit-text-size-adjust:100%}
 body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:var(--text);overflow-x:hidden;transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
-
-/* PIN SCREEN */
 #pin-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:clamp(16px,3.5vh,28px);padding:24px;background:var(--hero);position:relative;overflow:hidden}
 #pin-screen::before{content:'';position:absolute;width:min(360px,88vw);height:min(360px,88vw);border-radius:50%;border:1px solid var(--glow);top:-12%;right:-14%;pointer-events:none}
 #pin-screen::after{content:'';position:absolute;width:min(260px,66vw);height:min(260px,66vw);border-radius:50%;border:1px solid var(--glow);bottom:-8%;left:-8%;pointer-events:none}
@@ -67,7 +63,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .shake{animation:shake .4s}
 .pin-grid{display:grid;grid-template-columns:repeat(3,clamp(66px,18vw,78px));gap:clamp(8px,2vw,11px);position:relative;z-index:1}
 .pin-btn{height:clamp(66px,18vw,78px);background:var(--pin-btn);border:1px solid var(--border);border-radius:16px;color:var(--text);font-size:clamp(19px,5vw,24px);font-family:'Cormorant Garamond',serif;cursor:pointer;transition:all .18s;touch-action:manipulation}
-.pin-btn:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
+.pin-btn:hover{border-color:var(--acc);color:var(--acc)}
 .pin-btn:active{transform:scale(.94)}
 .theme-row{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
 .theme-lbl{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
@@ -77,17 +73,12 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .td-pearl{background:radial-gradient(circle at 35% 35%,#E8D8B0,#F5F0E8)}
 .td-rose{background:radial-gradient(circle at 35% 35%,#4A2838,#180D10)}
 .pin-note{font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;position:relative;z-index:1}
-
-/* INSTALL BAR */
 #install-bar{display:none;padding:10px 16px;background:var(--card2);border-bottom:1px solid var(--border);align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:200}
-.inst-txt{font-size:12px;color:var(--text2)}
-.inst-btn{background:var(--acc);color:var(--bg);border:none;border-radius:8px;padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation}
+.inst-txt{font-size:12px;color:var(--text2)}.inst-btn{background:var(--acc);color:var(--bg);border:none;border-radius:8px;padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation}
 .inst-x{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;padding:4px;line-height:1;touch-action:manipulation}
-
-/* APP LAYOUT */
 #app-screen{display:none;min-height:100vh}
 .app-hero{background:var(--hero);padding:clamp(14px,3.5vw,22px) clamp(14px,4vw,22px) clamp(12px,3vw,18px);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-.app-hero::after{content:'\2726';position:absolute;right:clamp(10px,3vw,20px);top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(54px,12vw,84px);color:var(--glow);pointer-events:none}
+.app-hero::after{content:'º6';position:absolute;right:clamp(10px,3vw,20px);top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(54px,12vw,84px);color:var(--glow);pointer-events:none}
 .hero-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
 .hero-eye{font-size:clamp(9px,2vw,10px);letter-spacing:4px;text-transform:uppercase;color:var(--acc);margin-bottom:4px}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,5vw,28px);font-weight:300;color:var(--text);line-height:1.1}
@@ -96,37 +87,23 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
 .hero-themes{display:flex;gap:7px}
 .hero-btns{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-
 .btn{background:none;border:1px solid var(--border2);border-radius:9px;color:var(--text3);font-size:clamp(10px,2.5vw,12px);padding:clamp(7px,2vw,9px) clamp(9px,2.5vw,13px);cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;white-space:nowrap;transition:all .18s;-webkit-appearance:none}
 .btn:hover,.btn:active{border-color:var(--acc);color:var(--acc)}
 .btn.primary{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:600}
 .btn.primary:hover{background:var(--acc2);border-color:var(--acc2)}
 .btn.danger:hover,.btn.danger:active{border-color:#E07070;color:#E07070}
 .btn.on{border-color:rgba(90,154,74,.5)!important;color:#6ABA5A!important}
-
-/* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
-@media(max-width:400px){
-  .stats-row{grid-template-columns:repeat(2,1fr)}
-  .sc:nth-child(2){border-right:none}
-  .sc:nth-child(3){border-top:1px solid var(--border)}
-  .sc:nth-child(4){border-top:1px solid var(--border);border-right:none}
-}
+@media(max-width:400px){.stats-row{grid-template-columns:repeat(2,1fr)}.sc:nth-child(2){border-right:none}.sc:nth-child(3){border-top:1px solid var(--border)}.sc:nth-child(4){border-top:1px solid var(--border);border-right:none}}
 .sc{padding:clamp(10px,3vw,14px);background:var(--stat);border-right:1px solid var(--border);position:relative;overflow:hidden}
 .sc:last-child{border-right:none}
-.sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:0;transition:opacity .3s}
-.sc:hover::after{opacity:1}
 .sc-lbl{font-size:clamp(8px,2vw,9px);letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}
 .sc-val{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,4vw,20px);color:var(--acc);line-height:1}
-
-/* DRIVE BAR */
 #drive-bar{display:none;padding:6px clamp(14px,4vw,22px);background:var(--bg2);border-bottom:1px solid var(--border);align-items:center;gap:8px;flex-wrap:wrap}
 .ddot{width:7px;height:7px;border-radius:50%;background:var(--border2);flex-shrink:0}
 .ddot.ok{background:#5A9A4A}.ddot.busy{background:var(--acc);animation:blink 1s infinite}.ddot.err{background:#C06060}
 #drive-msg{font-size:11px;color:var(--text3)}#drive-sync{font-size:10px;color:var(--muted);margin-left:auto}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-
-/* FILTER PANEL — 3 rows */
 .filter-panel{background:var(--bg2);border-bottom:1px solid var(--border);padding:clamp(9px,2.5vw,13px) clamp(14px,4vw,22px);display:flex;flex-direction:column;gap:7px}
 .filter-row{display:flex;align-items:center;gap:8px}
 .filter-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);min-width:56px;flex-shrink:0}
@@ -136,16 +113,10 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .chip.active{border-color:var(--acc);color:var(--acc);background:var(--card)}
 .chip.gchip.active{border-color:#C8960C;color:#C8960C;background:rgba(200,150,12,.08)}
 .chip.schip.active{border-color:#A8B8C8;color:#A8B8C8;background:rgba(168,184,200,.08)}
-
-/* TOOLBAR */
 .toolbar{display:flex;align-items:center;justify-content:space-between;padding:clamp(9px,2.5vw,13px) clamp(14px,4vw,22px);border-bottom:1px solid var(--border);background:var(--bg2);gap:8px}
 .toolbar-left{display:flex;align-items:center;gap:8px;min-width:0}
 #filter-count{font-size:11px;color:var(--text3);white-space:nowrap;flex-shrink:0}
-
-/* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(145px,40vw,265px),1fr));gap:clamp(10px,3vw,15px);padding:clamp(12px,3vw,18px) clamp(14px,4vw,22px) 80px}
-
-/* CARD */
 .card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative}
 .card:hover{border-color:var(--acc);transform:translateY(-3px);box-shadow:var(--shadow),0 0 0 1px var(--glow)}
 .card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);transition:left .55s;z-index:2;pointer-events:none}
@@ -163,8 +134,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .card-name{font-family:'Cormorant Garamond',serif;font-size:clamp(14px,3.5vw,17px);color:var(--text);margin-bottom:5px;line-height:1.2}
 .card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:7px}
 .tag{background:var(--card2);border:1px solid var(--border);border-radius:5px;font-size:9px;color:var(--text3);padding:2px 7px}
-.tag.ktag{color:var(--acc);border-color:var(--border2)}
-.tag.stag{color:#A8B8C8;border-color:rgba(168,184,200,.3)}
+.tag.ktag{color:var(--acc);border-color:var(--border2)}.tag.stag{color:#A8B8C8;border-color:rgba(168,184,200,.3)}
 .card-price{font-family:'Cormorant Garamond',serif;font-size:clamp(13px,3.5vw,16px);color:var(--acc)}
 .card-detail{font-size:10px;color:var(--text3);margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card-divider{height:1px;background:var(--border);margin:clamp(8px,2vw,10px) 0}
@@ -173,14 +143,10 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .act:hover,.act:active{border-color:var(--acc);color:var(--acc)}
 .act.del:hover,.act.del:active{border-color:#E07070;color:#E07070}
 .act.dl:hover,.act.dl:active{border-color:#5A9A4A;color:#7ACA6A}
-
-/* EMPTY */
 .empty{grid-column:1/-1;text-align:center;padding:clamp(48px,12vh,76px) 20px}
 .empty-ring{width:86px;height:86px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:36px;background:var(--card2)}
 .empty-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--text2);margin-bottom:8px}
 .empty-sub{font-size:12px;color:var(--text3)}
-
-/* OVERLAYS */
 .overlay{position:fixed;inset:0;background:var(--overlay);display:none;z-index:500;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .overlay.open{display:flex}
 @media(min-width:620px){.overlay{align-items:center;padding:20px}}
@@ -193,8 +159,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .modal-sub{font-size:10px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
 .close-x{background:none;border:1px solid var(--border);border-radius:8px;color:var(--text3);font-size:15px;padding:6px 12px;cursor:pointer;line-height:1;flex-shrink:0;touch-action:manipulation;transition:all .15s}
 .close-x:hover{border-color:var(--text2);color:var(--text)}
-
-/* FORM */
 .field{margin-bottom:clamp(12px,3vw,15px)}
 .field-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
 .field-lbl{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
@@ -204,19 +168,14 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .field select option{background:var(--card)}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,2vw,12px)}
 @media(max-width:360px){.f2{grid-template-columns:1fr}}
-
-/* METAL TOGGLE */
 .metal-toggle{display:flex;gap:6px}
 .mt-btn{flex:1;background:none;border:1px solid var(--border);border-radius:9px;color:var(--text3);font-size:13px;padding:10px 6px;cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;transition:all .18s;text-align:center}
 .mt-btn:hover{border-color:var(--acc)}
 .mt-btn.gold-active{background:rgba(200,150,12,.12);border-color:#C8960C;color:#C8960C}
 .mt-btn.silver-active{background:rgba(168,184,200,.12);border-color:#A8B8C8;color:#A8B8C8}
 .mt-btn.other-active{background:var(--card2);border-color:var(--border2);color:var(--text2)}
-
-/* PHOTO */
 .photo-area{width:100%;height:clamp(122px,27vw,150px);background:var(--input);border:2px dashed var(--border2);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;overflow:hidden;position:relative;cursor:pointer;touch-action:manipulation;transition:border-color .2s}
 .photo-area:hover,.photo-area:active{border-color:var(--acc)}
-.photo-area img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .ph-lbl{font-size:12px;color:var(--text3)}.ph-hint{font-size:10px;color:var(--muted)}
 .ph-hover{position:absolute;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(3px);display:flex;gap:10px;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
 .photo-area:hover .ph-hover{opacity:1}
@@ -229,15 +188,11 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .ct.q{background:rgba(200,150,12,.1);color:var(--acc);border:1px solid rgba(200,150,12,.18)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .proc{animation:pulse 1s infinite;color:var(--text3);font-size:12px;text-align:center;padding:20px}
-
-/* MODAL FOOTER */
 .modal-foot{display:flex;gap:10px;margin-top:18px}
 .save-btn{flex:1;background:var(--acc);color:var(--bg);border:none;border-radius:12px;padding:clamp(12px,3vw,14px);font-size:14px;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;transition:all .18s}
 .save-btn:hover{background:var(--acc2);transform:translateY(-1px)}
 .cancel-btn{background:none;border:1px solid var(--border);border-radius:12px;padding:clamp(12px,3vw,14px) 18px;color:var(--text3);cursor:pointer;font-family:'Jost',sans-serif;font-size:14px;touch-action:manipulation;transition:all .15s}
 .cancel-btn:hover{border-color:var(--text2);color:var(--text)}
-
-/* GALLERY */
 #ov-gallery .modal{max-width:680px}
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(85px,26vw,140px),1fr));gap:6px}
 .gal-thumb{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;cursor:pointer;background:var(--card2);border:1px solid var(--border)}
@@ -248,8 +203,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .gal-name{font-size:10px;color:#fff;text-align:center;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
 .gal-pill{font-size:9px;padding:2px 7px;border-radius:5px;font-weight:600;align-self:flex-start}
 .gal-pill.gold{background:#C8960C;color:#000}.gal-pill.silver{background:#A8B8C8;color:#000}.gal-pill.other{background:rgba(255,255,255,.25);color:#fff}
-
-/* LIGHTBOX */
 #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:900;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
 #lightbox.open{display:flex}
 #lb-img{max-width:94vw;max-height:76vh;object-fit:contain;border-radius:8px}
@@ -263,8 +216,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 #lb-prev{left:10px}#lb-next{right:10px}
 #lb-prev:hover,#lb-next:hover{background:rgba(255,255,255,.2)}
 #lb-counter{position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,255,255,.45);letter-spacing:1px}
-
-/* BILLS */
 .bill-list{display:flex;flex-direction:column;gap:10px;max-height:58vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:2px}
 .bill-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:13px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .15s}
 .bill-card:hover{border-color:var(--acc)}
@@ -275,8 +226,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .bill-meta{font-size:10px;color:var(--text3);margin-top:4px;display:flex;gap:8px;flex-wrap:wrap}
 .bill-price{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--acc);flex-shrink:0;align-self:center}
 .no-bills{text-align:center;padding:40px;color:var(--text3);font-size:14px}
-
-/* SETTINGS */
 .s-sec{margin-bottom:22px}
 .s-head{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--acc);padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:14px}
 .s-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -288,8 +237,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .info-box p{font-size:11px;color:var(--text3);line-height:1.75}
 .info-box code{background:var(--card);padding:1px 6px;border-radius:4px;font-size:10px;color:var(--text2);border:1px solid var(--border)}
 .pin-row{display:flex;gap:8px}.pin-row input{flex:1}.pin-row .s-btn{flex-shrink:0}
-
-/* TOAST */
 #toast{position:fixed;bottom:max(24px,env(safe-area-inset-bottom,24px));left:50%;transform:translateX(-50%) translateY(90px);background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:10px 20px;font-size:13px;color:var(--text);z-index:999;transition:transform .32s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap;max-width:88vw;box-shadow:var(--shadow);overflow:hidden;text-overflow:ellipsis}
 #toast.show{transform:translateX(-50%) translateY(0)}
 #toast.ok{border-color:rgba(90,154,74,.5);color:#7ACA6A}
@@ -298,7 +245,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .card{animation:fadeUp .3s ease both}
 </style>
-
 </head>
 <body>
 
@@ -351,8 +297,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 
 <!-- APP SCREEN -->
 <div id="app-screen">
-
-  <!-- Hero header -->
   <div class="app-hero">
     <div class="hero-inner">
       <div>
@@ -370,21 +314,19 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
           <button class="btn" id="drive-btn" onclick="openSettings('drive')" title="Google Drive">&#9729;</button>
           <button class="btn" onclick="openGallery()" title="Photo Gallery">&#128247; Gallery</button>
           <button class="btn" onclick="openBills()" title="All Bills">&#128196; Bills</button>
-          <button class="btn" onclick="manualBackup()" title="Backup">&#128190;</button>
-          <button class="btn" onclick="document.getElementById('imp-inp').click()" title="Restore">&#128194;</button>
+          <button class="btn" onclick="openSettings('backup')" title="Backup">&#128190;</button>
           <button class="btn" onclick="openSettings('main')" title="Settings">&#9881;</button>
           <button class="btn danger" onclick="lockApp()" title="Lock">&#128274;</button>
         </div>
       </div>
     </div>
   </div>
-  <input id="imp-inp" type="file" accept=".json" style="display:none" onchange="manualRestore(this)"/>
 
-  <!-- Drive status bar -->
-  <div id="drive-bar">
-    <div class="ddot" id="drive-dot"></div>
-    <span id="drive-msg"></span>
-    <span id="drive-sync"></span>
+  <!-- Sync status bar -->
+  <div id="sync-bar">
+    <div class="sync-dot" id="sync-dot"></div>
+    <span id="sync-msg"></span>
+    <span id="sync-time"></span>
   </div>
 
   <!-- Stats -->
@@ -395,7 +337,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     <div class="sc"><div class="sc-lbl">Locations</div><div class="sc-val" id="s-loc">&#8212;</div></div>
   </div>
 
-  <!-- 3-axis filter: Metal | Type | Location -->
+  <!-- 3-axis filter -->
   <div class="filter-panel">
     <div class="filter-row">
       <span class="filter-lbl">Metal</span>
@@ -420,7 +362,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     <button class="btn primary" onclick="openItem()">&#65291; Add Jewelry</button>
   </div>
 
-  <!-- Card grid -->
   <div class="grid" id="grid"></div>
 </div>
 
@@ -436,17 +377,15 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     </div>
     <button class="close-x" onclick="closeOv('ov-item')">&#10005;</button>
   </div>
-
-  <!-- Photo -->
   <div class="field">
     <div class="field-top">
       <span class="field-lbl">Photo</span>
-      <span style="font-size:10px;color:var(--muted)">WebP Q92 &middot; No size limit &middot; In backup</span>
+      <span style="font-size:10px;color:var(--muted)">WebP Q92 &middot; Max 4000px &middot; IndexedDB</span>
     </div>
     <div class="photo-area" id="ph-area" onclick="document.getElementById('ph-inp').click()">
       <span style="font-size:28px">&#128248;</span>
       <span class="ph-lbl">Tap to add photo</span>
-      <span class="ph-hint">Full quality &middot; Photos saved in JSON backup</span>
+      <span class="ph-hint">Full quality &middot; Unlimited storage</span>
       <div class="ph-hover">
         <button class="ph-rep" onclick="event.stopPropagation();document.getElementById('ph-inp').click()">Replace</button>
         <button class="ph-del" onclick="event.stopPropagation();rmPhoto()">Remove</button>
@@ -459,8 +398,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
       <span class="ct q">Q92 &middot; High Quality</span>
     </div>
   </div>
-
-  <!-- Metal -->
   <div class="field">
     <div class="field-top"><span class="field-lbl">Metal *</span></div>
     <div class="metal-toggle">
@@ -469,8 +406,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
       <button class="mt-btn" id="mt-other"  onclick="setMetal('Other')" >&#128160; Other</button>
     </div>
   </div>
-
-  <!-- Type + Karat -->
   <div class="f2">
     <div class="field">
       <div class="field-top"><span class="field-lbl">Jewelry Type</span></div>
@@ -482,21 +417,13 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     </div>
     <div class="field">
       <div class="field-top"><span class="field-lbl">Karat / Purity</span></div>
-      <select id="f-karat">
-        <option>22K</option><option>24K</option><option>18K</option><option>14K</option>
-        <option>Sterling 925</option><option>Silver 999</option><option>Silver 800</option>
-        <option>Other / Unknown</option>
-      </select>
+      <select id="f-karat"></select>
     </div>
   </div>
-
-  <!-- Name -->
   <div class="field">
     <div class="field-top"><span class="field-lbl">Item Name *</span></div>
     <input id="f-name" type="text" placeholder="e.g. Bridal Necklace Set" autocomplete="off"/>
   </div>
-
-  <!-- Weight + Date -->
   <div class="f2">
     <div class="field">
       <div class="field-top"><span class="field-lbl">Weight (grams)</span></div>
@@ -507,8 +434,6 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
       <input id="f-date" type="date"/>
     </div>
   </div>
-
-  <!-- Price + Location -->
   <div class="f2">
     <div class="field">
       <div class="field-top"><span class="field-lbl">Price (&#8377;)</span></div>
@@ -516,23 +441,18 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     </div>
     <div class="field">
       <div class="field-top"><span class="field-lbl">&#128205; Location</span></div>
-      <input id="f-loc" type="text" list="loc-list" placeholder="e.g. Bank Locker, Home" autocomplete="off"/>
+      <input id="f-loc" type="text" list="loc-list" placeholder="e.g. Bank Locker" autocomplete="off"/>
       <datalist id="loc-list"></datalist>
     </div>
   </div>
-
-  <!-- Bill -->
   <div class="field">
     <div class="field-top"><span class="field-lbl">Bill Reference</span></div>
     <input id="f-bill" type="text" placeholder="e.g. BILL-001 / Tanishq-2024" autocomplete="off"/>
   </div>
-
-  <!-- Notes -->
   <div class="field">
     <div class="field-top"><span class="field-lbl">Notes</span></div>
     <textarea id="f-notes" rows="3" placeholder="Occasion, shop, gift from&#8230;" style="resize:vertical"></textarea>
   </div>
-
   <div class="modal-foot">
     <button class="cancel-btn" onclick="closeOv('ov-item')">Cancel</button>
     <button class="save-btn" id="save-btn" onclick="saveItem()">&#128190; Save Item</button>
@@ -552,9 +472,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     </div>
     <button class="close-x" onclick="closeOv('ov-gallery')">&#10005;</button>
   </div>
-  <!-- Gallery filter chips -->
   <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px" id="gal-chips"></div>
-  <!-- Thumb grid -->
   <div class="gallery-grid" id="gal-grid"></div>
 </div>
 </div>
@@ -595,45 +513,68 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 <div class="modal">
   <div class="modal-handle"></div>
   <div class="modal-head">
-    <div><div class="modal-eye">Configuration</div><div class="modal-title">&#9881; Settings</div></div>
+    <div><div class="modal-eye">Configuration</div><div class="modal-title">&#9881; Settings</div><div class="modal-sub" style="display:block">Jewelry Vault v<span id="app-ver"></span></div></div>
     <button class="close-x" onclick="closeOv('ov-set')">&#10005;</button>
   </div>
 
   <div class="s-sec" id="s-drive-sec">
     <div class="s-head">&#9729; Google Drive Backup</div>
-    <div class="field">
-      <div class="field-top"><span class="field-lbl">OAuth Client ID</span></div>
-      <input id="s-cid" type="text" placeholder="Paste your Google Client ID&#8230;" autocomplete="off"/>
-      <div style="font-size:10px;color:var(--text3);margin-top:5px;line-height:1.6">
-        Google Cloud Console &#8594; APIs &amp; Services &#8594; Credentials &#8594; OAuth Client ID<br/>
-        Authorised JS origin: <code>https://ashi100sh.github.io</code>
+    <div id="cid-hardcoded" style="background:var(--input);border:1px solid rgba(90,154,74,.25);border-radius:10px;padding:11px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:18px">&#9989;</span>
+      <div>
+        <div style="font-size:12px;color:#6ABA5A;font-weight:500">Google OAuth Configured</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:2px">Client ID is built-in &mdash; just tap Connect below</div>
       </div>
     </div>
+    <input id="s-cid" type="hidden" value=""/>
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
       <button class="s-btn" id="drive-conn-btn" onclick="toggleDrive()">Connect Google Drive</button>
       <span id="drive-conn-st" style="font-size:11px;color:var(--text3)"></span>
     </div>
-    <div id="drive-acts" style="display:none">
-      <div class="s-acts">
-        <button class="s-act" onclick="driveBackup()">&#9729; Backup Now</button>
+    <div id="drive-acts" style="display:none;margin-top:12px">
+      <div class="s-acts" style="margin-top:0">
+        <button class="s-act" onclick="forceDriveSync()">&#9729; Sync Now</button>
         <button class="s-act" onclick="driveRestore()">&#8595; Restore from Drive</button>
       </div>
     </div>
     <div class="info-box">
-      <p>&#10022; Only accesses files the app creates (<code>drive.file</code> scope)</p>
-      <p>&#10022; Auto-backup 3 s after each save &middot; File: <code>jewelry_vault_backup.json</code></p>
+      <p>&#10022; Tap <strong style="color:var(--text2)">Connect</strong> &rarr; sign in with any Google account &rarr; done</p>
+      <p>&#10022; Syncs on <strong style="color:var(--text2)">every add / edit / delete</strong> automatically</p>
+      <p>&#10022; Keeps current + previous backup &mdash; atomic write, never corrupts</p>
+      <p>&#10022; Only <code>drive.file</code> scope &mdash; cannot see your other Drive files</p>
     </div>
   </div>
 
-  <div class="s-sec">
-    <div class="s-head">&#128193; Manual Backup</div>
-    <div class="s-acts">
-      <button class="s-act" onclick="manualBackup();closeOv('ov-set')">&#128190; Export JSON</button>
-      <button class="s-act" onclick="closeOv('ov-set');setTimeout(()=>document.getElementById('imp-inp').click(),200)">&#128194; Import JSON</button>
-      <button class="s-act" onclick="exportPhotos()">&#8595; Photos ZIP</button>
+  <div class="s-sec" id="s-backup-sec">
+    <div class="s-head">&#128193; Backup &amp; Restore</div>
+    <div class="field" style="margin-bottom:10px">
+      <div class="field-top"><span class="field-lbl">&#128272; Backup Password</span></div>
+      <div style="display:flex;gap:8px">
+        <input id="enc-pw" type="password" placeholder="Password for encrypted export" autocomplete="new-password" style="flex:1"/>
+        <button class="s-btn" id="enc-eye" onclick="toggleEncPw()" style="flex-shrink:0;font-size:16px;padding:8px 12px">&#128065;</button>
+      </div>
+      <div style="font-size:10px;color:var(--text3);margin-top:5px;line-height:1.6">
+        AES-256-GCM &middot; password never stored &middot; <strong style="color:var(--acc)">remember it &mdash; cannot recover without it</strong>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">Export</div>
+    <div class="s-acts" style="margin-top:0">
+      <button class="s-act" onclick="exportBoth()">&#128190;&#128272; Both Files</button>
+      <button class="s-act" onclick="manualBackup()">&#128190; JSON Only</button>
+      <button class="s-act" onclick="encBackup()">&#128272; Encrypted</button>
     </div>
     <div class="info-box">
-      <p>&#10022; JSON backup includes <strong style="color:var(--text2)">all photos</strong> (base64) &#8212; restore everything on any device</p>
+      <p>&#10022; <strong style="color:var(--text2)">Both Files</strong> &mdash; plain JSON + encrypted <code>.ejv</code> downloaded together</p>
+      <p>&#10022; All photos included (base64 embedded) in both formats</p>
+    </div>
+    <div style="font-size:10px;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin:14px 0 8px">Import / Restore</div>
+    <div class="s-acts" style="margin-top:0">
+      <button class="s-act" onclick="document.getElementById('uni-imp').click()">&#128194; Import Any File</button>
+      <button class="s-act" onclick="exportPhotos()">&#8595; Photos ZIP</button>
+    </div>
+    <input id="uni-imp" type="file" accept=".json,.ejv" style="display:none" onchange="universalRestore(this)"/>
+    <div class="info-box">
+      <p>&#10022; Auto-detects <code>.json</code> or <code>.ejv</code> &mdash; enter password first for encrypted file</p>
     </div>
   </div>
 
@@ -658,178 +599,425 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 <div id="toast"></div>
 
 <script>
-/* =========================================================
-   JEWELRY VAULT v5 — Gold, Silver, Other + Location filter
-   Gallery lightbox + Bills scroll view
-   ========================================================= */
-const STORE='gjv_v5', CFG='gjv_cfg_v5', DRIVE_FILE='jewelry_vault_backup.json';
-const JTYPES=['Necklace','Bangles','Ring','Earrings','Chain','Anklet','Bracelet','Pendant','Brooch','Other'];
-const METALS=['Gold','Silver','Other'];
-const EMO={Necklace:'\u{1F4FF}',Bangles:'\u{1F49B}',Ring:'\u{1F48D}',Earrings:'\u{2728}',
-  Chain:'\u26D3\uFE0F',Anklet:'\u{1F517}',Bracelet:'\u{1FA6C}',
-  Pendant:'\u{1F52E}',Brooch:'\u{1F338}',Other:'\u{1F3C5}'};
-const GK=['22K','24K','18K','14K','Other / Unknown'];
-const SK=['Sterling 925','Silver 999','Silver 800','Other / Unknown'];
-const OK=['Other / Unknown','22K','24K','18K','Sterling 925'];
+'use strict';
+/* =============================================================
+   JEWELRY VAULT v6
+   Storage: localStorage (meta) + IndexedDB (photos+checkpoint)
+   Sync:    Google Drive on every change (atomic write)
+   ============================================================= */
 
-let items=[], cfg={}, pinBuf='', userPin='1234';
-let editId=null, curPhoto='', curMeta=null, curMetal='Gold';
-let fMetal='All', fType='All', fLoc='All';
-let gapiOk=false, tokenClient=null, driveToken=null, driveFileId=null, driveOn=false;
-let pwaPrompt=null, driveTimer=null;
-let lbPhotos=[], lbIdx=0, galFilter='All';
+// ── CONSTANTS ──────────────────────────────────────────────
+const APP_VERSION   = '6.1';
+const HARDCODED_CID = '837338190227-tllb7sifh816u0p7mahs9e36it3lvqtf.apps.googleusercontent.com';
+const LS_META   = 'gjv_meta_v6';   // item metadata array
+const LS_CFG    = 'gjv_cfg_v6';    // config + PIN
+const LS_DIRTY  = 'gjv_dirty';     // 'true' if Drive needs sync
+const LS_DSYNC  = 'gjv_dsync';     // last Drive sync timestamp
+const DB_NAME   = 'jewelry_vault_db';
+const DB_VER    = 1;
+const DRIVE_CUR  = 'jewelry_vault_backup.json';
+const DRIVE_PREV = 'jewelry_vault_backup_prev.json';
+const DRIVE_TEMP = 'jewelry_vault_TEMP.json';
 
-/* ── BOOT ── */
-window.onload=()=>{
-  try{cfg=JSON.parse(localStorage.getItem(CFG)||'{}');}catch{}
-  userPin=cfg.pin||'1234';
-  setTheme(cfg.theme||'dark',false);
+const JTYPES = ['Necklace','Bangles','Ring','Earrings','Chain','Anklet','Bracelet','Pendant','Brooch','Other'];
+const EMO    = {Necklace:'\u{1F4FF}',Bangles:'\u{1F49B}',Ring:'\u{1F48D}',Earrings:'\u2728',
+                Chain:'\u26D3\uFE0F',Anklet:'\u{1F517}',Bracelet:'\u{1FA6C}',
+                Pendant:'\u{1F52E}',Brooch:'\u{1F338}',Other:'\u{1F3C5}'};
+const GK = ['22K','24K','18K','14K','Other / Unknown'];
+const SK = ['Sterling 925','Silver 999','Silver 800','Other / Unknown'];
+const OK = ['Other / Unknown','22K','24K','18K','Sterling 925'];
+
+// ── STATE ──────────────────────────────────────────────────
+let db       = null;      // IndexedDB instance
+let items    = [];        // metadata array (no photos)
+let cfg      = {};        // { pin, theme, cid, driveAuto }
+let pinBuf   = '';
+let userPin  = '1234';
+let editId   = null;
+let curBlob  = null;      // Blob being edited in modal
+let curMeta  = null;      // { size } for display
+let curMetal = 'Gold';
+let fMetal   = 'All', fType = 'All', fLoc = 'All';
+let lbItems  = [], lbIdx  = 0, galFilter = 'All';
+let driveOn  = false, driveToken = null, driveFileIds = {};
+let gapiOk   = false, tokenClient = null;
+let pwaPrompt = null;
+
+// ── HELPERS ────────────────────────────────────────────────
+const fmt    = n => n ? '\u20B9' + Number(n).toLocaleString('en-IN') : '\u2014';
+const fmtSz  = b => b < 1048576 ? Math.round(b/1024)+' KB' : (b/1048576).toFixed(1)+' MB';
+const esc    = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const today  = () => new Date().toISOString().slice(0,10);
+const sleep  = ms => new Promise(r => setTimeout(r, ms));
+const getLocs = () => [...new Set(items.map(i=>i.loc).filter(Boolean))].sort();
+
+function toast(msg, type='', dur=2800) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show' + (type ? ' '+type : '');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.className = '', dur);
+}
+
+function setSyncUI(state, msg, time='') {
+  const bar  = document.getElementById('sync-bar');
+  const dot  = document.getElementById('sync-dot');
+  const txt  = document.getElementById('sync-msg');
+  const ts   = document.getElementById('sync-time');
+  if (!bar) return;
+  bar.style.display = msg ? 'flex' : 'none';
+  dot.className = 'sync-dot' + (state ? ' '+state : '');
+  txt.textContent = msg;
+  ts.textContent  = time;
+}
+
+// ── INDEXEDDB ──────────────────────────────────────────────
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VER);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains('photos'))
+        d.createObjectStore('photos');          // key = item.id
+      if (!d.objectStoreNames.contains('checkpoint'))
+        d.createObjectStore('checkpoint');      // key = 'latest'
+    };
+    req.onsuccess  = e => resolve(e.target.result);
+    req.onerror    = e => reject(e.target.error);
+  });
+}
+
+function dbPut(store, key, value) {
+  return new Promise((resolve, reject) => {
+    const tx  = db.transaction(store, 'readwrite');
+    const req = tx.objectStore(store).put(value, key);
+    req.onsuccess = () => resolve();
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+
+function dbGet(store, key) {
+  return new Promise((resolve, reject) => {
+    const tx  = db.transaction(store, 'readonly');
+    const req = tx.objectStore(store).get(key);
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+
+function dbDelete(store, key) {
+  return new Promise((resolve, reject) => {
+    const tx  = db.transaction(store, 'readwrite');
+    const req = tx.objectStore(store).delete(key);
+    req.onsuccess = () => resolve();
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+
+function dbGetAll(store) {
+  return new Promise((resolve, reject) => {
+    const tx  = db.transaction(store, 'readonly');
+    const req = tx.objectStore(store).getAll();
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+
+function dbGetAllKeys(store) {
+  return new Promise((resolve, reject) => {
+    const tx  = db.transaction(store, 'readonly');
+    const req = tx.objectStore(store).getAllKeys();
+    req.onsuccess = e => resolve(e.target.result);
+    req.onerror   = e => reject(e.target.error);
+  });
+}
+
+// ── STORAGE: SAVE / LOAD ───────────────────────────────────
+function saveMeta() {
+  try { localStorage.setItem(LS_META, JSON.stringify(items)); }
+  catch(e) { toast('localStorage full! Export backup now!','err',6000); }
+}
+
+function loadMeta() {
+  try {
+    const d = localStorage.getItem(LS_META);
+    return d ? JSON.parse(d) : [];
+  } catch { return []; }
+}
+
+function saveCfg() {
+  try { localStorage.setItem(LS_CFG, JSON.stringify(cfg)); } catch {}
+}
+
+function setDirty(val) {
+  try { localStorage.setItem(LS_DIRTY, val ? 'true' : 'false'); } catch {}
+}
+
+function isDirty() {
+  return localStorage.getItem(LS_DIRTY) === 'true';
+}
+
+async function saveCheckpoint() {
+  if (!db) return;
+  try {
+    await dbPut('checkpoint', 'latest', {
+      ts:    Date.now(),
+      count: items.length,
+      items: JSON.parse(JSON.stringify(items))   // deep copy, no photos
+    });
+  } catch(e) { console.warn('Checkpoint failed:', e); }
+}
+
+async function loadCheckpoint() {
+  if (!db) return null;
+  try { return await dbGet('checkpoint', 'latest'); }
+  catch { return null; }
+}
+
+// ── MASTER PERSIST: called on every add/edit/delete ────────
+async function persist(skipDrive = false) {
+  // 1. localStorage — sync, instant
+  saveMeta();
+  // 2. IndexedDB checkpoint — async, instant
+  await saveCheckpoint();
+  // 3. Drive — async, queued if not connected
+  if (!skipDrive) {
+    setDirty(true);
+    await driveSync();
+  }
+}
+
+// ── MIGRATION: v5 localStorage → v6 IndexedDB ─────────────
+
+function dataUrlToBlob(dataUrl) {
+  const [header, data] = dataUrl.split(',');
+  const mime = header.match(/:(.*?);/)[1];
+  const binary = atob(data);
+  const arr = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) arr[i] = binary.charCodeAt(i);
+  return new Blob([arr], { type: mime });
+}
+
+async function blobToDataUrl(blob) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload  = e => resolve(e.target.result);
+    r.onerror = () => reject(new Error('FileReader failed'));
+    r.readAsDataURL(blob);
+  });
+}
+
+// ── CRASH RECOVERY ─────────────────────────────────────────
+async function recoverIfNeeded() {
+  const meta = loadMeta();
+  if (meta.length > 0) {
+    items = meta;
+    return false;  // no recovery needed
+  }
+  // localStorage empty — check checkpoint
+  const cp = await loadCheckpoint();
+  if (cp && cp.items && cp.items.length > 0) {
+    items = cp.items;
+    saveMeta();  // restore to localStorage
+    toast(`\u26A0\uFE0F Recovered ${items.length} items from checkpoint`, 'warn', 5000);
+    return true;
+  }
+  items = [];
+  return false;
+}
+
+// ── BOOT ───────────────────────────────────────────────────
+window.onload = async () => {
+  // Load config
+  try { cfg = JSON.parse(localStorage.getItem(LS_CFG) || '{}'); } catch {}
+  userPin = cfg.pin || '1234';
+  setTheme(cfg.theme || 'dark', false);
   setupPWA();
+
+  // Open IndexedDB
+  try {
+    db = await openDB();
+  } catch(e) {
+    console.warn('IndexedDB unavailable:', e);
+    toast('IndexedDB unavailable — using localStorage only', 'warn', 5000);
+  }
+
+  // Auto-init Drive with hardcoded or saved Client ID
+  const activeCid = cfg.cid || HARDCODED_CID;
+  if (activeCid) cfg.cid = activeCid;
+
 };
 
-/* ── PWA ── */
-function setupPWA(){
-  if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
-  window.addEventListener('beforeinstallprompt',e=>{
-    e.preventDefault(); pwaPrompt=e;
-    document.getElementById('install-bar').style.display='flex';
+// ── PWA ────────────────────────────────────────────────────
+function setupPWA() {
+  // Show version
+  const vEl = document.getElementById('app-ver');
+  if (vEl) vEl.textContent = APP_VERSION;
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').then(reg => {
+      // Check for updates every 60 seconds when app is open
+      setInterval(() => reg.update(), 60000);
+
+      // Listen for new SW taking over
+      reg.addEventListener('updatefound', () => {
+        const newSW = reg.installing;
+        newSW.addEventListener('statechange', () => {
+          if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+            showUpdateBanner();
+          }
+        });
+      });
+    }).catch(() => {});
+
+    // Listen for message from new SW
+    navigator.serviceWorker.addEventListener('message', e => {
+      if (e.data && e.data.type === 'NEW_VERSION') showUpdateBanner();
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); pwaPrompt = e;
+    document.getElementById('install-bar').style.display = 'flex';
   });
-  window.addEventListener('appinstalled',()=>{
-    document.getElementById('install-bar').style.display='none'; toast('App installed!','ok');
-  });
-}
-function pwaInstall(){
-  if(!pwaPrompt) return;
-  pwaPrompt.prompt();
-  pwaPrompt.userChoice.then(r=>{
-    if(r.outcome==='accepted') document.getElementById('install-bar').style.display='none';
-    pwaPrompt=null;
+  window.addEventListener('appinstalled', () => {
+    document.getElementById('install-bar').style.display = 'none';
+    toast('App installed!', 'ok');
   });
 }
 
-/* ── THEME ── */
-function setTheme(t,save=true){
-  document.documentElement.setAttribute('data-theme',t);
-  if(save){cfg.theme=t;saveCfg();}
-  ['dark','pearl','rose'].forEach(th=>{
-    ['tp-','ta-'].forEach(p=>{
-      const el=document.getElementById(p+th);
-      if(el) el.classList.toggle('active',th===t);
+function showUpdateBanner() {
+  // Show update toast with reload button
+  const el = document.getElementById('toast');
+  el.innerHTML = '&#9889; New version available &nbsp;<button onclick="location.reload()" style="background:var(--acc);color:var(--bg);border:none;border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;font-family:Jost,sans-serif;font-weight:600;margin-left:4px">Update Now</button>';
+  el.className = 'show warn';
+  clearTimeout(el._t);
+  el._t = setTimeout(() => { el.className=''; el.innerHTML=''; }, 30000);
+}
+function pwaInstall() {
+  if (!pwaPrompt) return;
+  pwaPrompt.prompt();
+  pwaPrompt.userChoice.then(r => {
+    if (r.outcome === 'accepted')
+      document.getElementById('install-bar').style.display = 'none';
+    pwaPrompt = null;
+  });
+}
+
+// ── THEME ──────────────────────────────────────────────────
+function setTheme(t, save=true) {
+  document.documentElement.setAttribute('data-theme', t);
+  if (save) { cfg.theme = t; saveCfg(); }
+  ['dark','pearl','rose'].forEach(th => {
+    ['tp-','ta-'].forEach(p => {
+      const el = document.getElementById(p+th);
+      if (el) el.classList.toggle('active', th === t);
     });
   });
 }
 
-/* ── HELPERS ── */
-const fmt=n=>n?'\u20B9'+Number(n).toLocaleString('en-IN'):'\u2014';
-const fmtSz=b=>b<1048576?Math.round(b/1024)+' KB':(b/1048576).toFixed(1)+' MB';
-const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-
-function toast(msg,type='',dur=2800){
-  const el=document.getElementById('toast');
-  el.textContent=msg; el.className='show'+(type?' '+type:'');
-  clearTimeout(el._t); el._t=setTimeout(()=>el.className='',dur);
-}
-
-/* ── STORAGE ── */
-function loadItems(){try{const d=localStorage.getItem(STORE);return d?JSON.parse(d):[]}catch{return[]}}
-function saveItems(){
-  try{localStorage.setItem(STORE,JSON.stringify(items));}
-  catch{toast('Storage full! Export backup!','err',5000);}
-  scheduleDriveBackup();
-}
-function saveCfg(){try{localStorage.setItem(CFG,JSON.stringify(cfg));}catch{}}
-function getLocs(){return[...new Set(items.map(i=>i.loc).filter(Boolean))].sort();}
-
-/* ── PIN ── */
-function pp(d){
-  if(pinBuf.length>=4) return;
-  pinBuf+=d; updDots();
-  if(pinBuf.length===4){
-    if(pinBuf===userPin){setTimeout(unlock,220);}
-    else{
-      const el=document.getElementById('pin-err');
-      el.textContent='\u2717 Incorrect PIN'; el.classList.add('shake');
-      setTimeout(()=>{el.classList.remove('shake');el.textContent='\u00a0';pinBuf='';updDots();},1600);
+// ── PIN ────────────────────────────────────────────────────
+function pp(d) {
+  if (pinBuf.length >= 4) return;
+  pinBuf += d;
+  updDots();
+  if (pinBuf.length === 4) {
+    if (pinBuf === userPin) { setTimeout(unlock, 220); }
+    else {
+      const el = document.getElementById('pin-err');
+      el.textContent = '\u2717 Incorrect PIN';
+      el.classList.add('shake');
+      setTimeout(() => {
+        el.classList.remove('shake');
+        el.textContent = '\u00a0';
+        pinBuf = ''; updDots();
+      }, 1600);
     }
   }
 }
-function pd(){pinBuf=pinBuf.slice(0,-1);updDots();}
-function updDots(){for(let i=0;i<4;i++) document.getElementById('d'+i).classList.toggle('filled',i<pinBuf.length);}
+function pd() { pinBuf = pinBuf.slice(0,-1); updDots(); }
+function updDots() {
+  for (let i=0; i<4; i++)
+    document.getElementById('d'+i).classList.toggle('filled', i < pinBuf.length);
+}
 
-/* ── LOCK / UNLOCK ── */
-function unlock(){
-  pinBuf=''; updDots(); items=loadItems();
-  document.getElementById('pin-screen').style.display='none';
-  document.getElementById('app-screen').style.display='block';
-  if(cfg.cid&&cfg.driveAuto) initDrive(cfg.cid);
+// ── UNLOCK / LOCK ──────────────────────────────────────────
+async function unlock() {
+  pinBuf = ''; updDots();
+  document.getElementById('pin-screen').style.display = 'none';
+  document.getElementById('app-screen').style.display = 'block';
+
+  // Load + recover
+  await recoverIfNeeded();
+
+  // Always use hardcoded Client ID
+  cfg.cid = HARDCODED_CID;
+  saveCfg();
+  if (cfg.driveAuto) initDrive(HARDCODED_CID);
+
   renderAll();
-}
-function lockApp(){
-  document.getElementById('app-screen').style.display='none';
-  document.getElementById('pin-screen').style.display='flex';
+  setSyncUI('','');
 }
 
-/* ── RENDER ALL ── */
-function renderAll(){renderStats();renderFilters();renderGrid();}
-
-function renderStats(){
-  const w=items.reduce((s,i)=>s+Number(i.wt||0),0);
-  const v=items.reduce((s,i)=>s+Number(i.price||0),0);
-  const locs=getLocs();
-  document.getElementById('s-count').textContent=items.length;
-  document.getElementById('s-wt').textContent=w.toFixed(1)+'g';
-  document.getElementById('s-val').textContent=v?fmt(v):'\u2014';
-  document.getElementById('s-loc').textContent=locs.length||'\u2014';
+function lockApp() {
+  document.getElementById('app-screen').style.display = 'none';
+  document.getElementById('pin-screen').style.display = 'flex';
 }
 
-/* ── FILTERS ── */
-function renderFilters(){
-  // Metal row
-  const usedM=['All',...METALS.filter(m=>items.some(i=>i.metal===m))];
-  document.getElementById('chips-metal').innerHTML=usedM.map(m=>{
-    const cls=m==='Gold'?' gchip':m==='Silver'?' schip':'';
-    const lbl=m==='All'?'All Metals':m==='Gold'?'\u{1F947} Gold':m==='Silver'?'\u{1F948} Silver':'\u{1F4A0} Other';
+// ── RENDER ─────────────────────────────────────────────────
+function renderAll() { renderStats(); renderFilters(); renderGrid(); }
+
+function renderStats() {
+  const w = items.reduce((s,i) => s+Number(i.wt||0), 0);
+  const v = items.reduce((s,i) => s+Number(i.price||0), 0);
+  document.getElementById('s-count').textContent = items.length;
+  document.getElementById('s-wt').textContent    = w.toFixed(1)+'g';
+  document.getElementById('s-val').textContent   = v ? fmt(v) : '\u2014';
+  document.getElementById('s-loc').textContent   = getLocs().length || '\u2014';
+}
+
+function renderFilters() {
+  const usedM = ['All', ...['Gold','Silver','Other'].filter(m => items.some(i=>i.metal===m))];
+  document.getElementById('chips-metal').innerHTML = usedM.map(m => {
+    const cls = m==='Gold' ? ' gchip' : m==='Silver' ? ' schip' : '';
+    const lbl = m==='All'?'All Metals':m==='Gold'?'\u{1F947} Gold':m==='Silver'?'\u{1F948} Silver':'\u{1F4A0} Other';
     return `<button class="chip${cls}${m===fMetal?' active':''}" onclick="setF('metal','${m}')">${lbl}</button>`;
   }).join('');
 
-  // Type row — only types present in current data
-  const usedT=['All',...JTYPES.filter(t=>items.some(i=>i.type===t))];
-  document.getElementById('chips-type').innerHTML=usedT.map(t=>
+  const usedT = ['All', ...JTYPES.filter(t => items.some(i=>i.type===t))];
+  document.getElementById('chips-type').innerHTML = usedT.map(t =>
     `<button class="chip${t===fType?' active':''}" onclick="setF('type','${esc(t)}')">${t}</button>`
   ).join('');
 
-  // Location row — unique locations from data
-  const locs=['All',...getLocs()];
-  document.getElementById('chips-loc').innerHTML=locs.map(l=>
+  const locs = ['All', ...getLocs()];
+  document.getElementById('chips-loc').innerHTML = locs.map(l =>
     `<button class="chip${l===fLoc?' active':''}" onclick="setF('loc','${esc(l)}')">${l==='All'?'All Locations':'\u{1F4CD} '+esc(l)}</button>`
   ).join('');
 }
 
-function setF(ax,v){
-  if(ax==='metal') fMetal=v;
-  else if(ax==='type') fType=v;
+function setF(ax, v) {
+  if (ax==='metal') fMetal=v;
+  else if (ax==='type') fType=v;
   else fLoc=v;
   renderFilters(); renderGrid();
 }
-
-function clearFilters(){fMetal='All';fType='All';fLoc='All';renderFilters();renderGrid();}
-
-function getFiltered(){
-  return items.filter(i=>
-    (fMetal==='All'||i.metal===fMetal)&&
-    (fType==='All'||i.type===fType)&&
-    (fLoc==='All'||i.loc===fLoc)
+function clearFilters() { fMetal='All'; fType='All'; fLoc='All'; renderFilters(); renderGrid(); }
+function getFiltered() {
+  return items.filter(i =>
+    (fMetal==='All' || i.metal===fMetal) &&
+    (fType==='All'  || i.type===fType)   &&
+    (fLoc==='All'   || i.loc===fLoc)
   );
 }
 
-/* ── GRID ── */
-function renderGrid(){
-  const list=getFiltered(), grid=document.getElementById('grid');
-  const fc=document.getElementById('filter-count');
-  fc.textContent=list.length<items.length?`Showing ${list.length} of ${items.length}`:'';
+function renderGrid() {
+  const list = getFiltered();
+  const grid = document.getElementById('grid');
+  const fc   = document.getElementById('filter-count');
+  fc.textContent = list.length < items.length ? `Showing ${list.length} of ${items.length}` : '';
 
-  if(!list.length){
-    grid.innerHTML=`<div class="empty">
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty">
       <div class="empty-ring">${items.length===0?'\u{1F48D}':fMetal==='Silver'?'\u{1F948}':'\u{1F947}'}</div>
       <div class="empty-title">${items.length===0?'Your vault is empty':'No items match filters'}</div>
       <div class="empty-sub">${items.length===0?'Tap \u201c\uFF0B Add Jewelry\u201d to begin':'Try clearing the filters'}</div>
@@ -837,441 +1025,934 @@ function renderGrid(){
     return;
   }
 
-  grid.innerHTML=list.map((it,idx)=>{
-    const mc=(it.metal||'Gold').toLowerCase();
-    const imgPart=it.photo
-      ?`<img src="${it.photo}" alt="${esc(it.name)}" loading="lazy"/>
-        <span class="metal-pill ${mc}">${it.karat}</span>
-        ${it.photoMeta?`<span class="img-sz">${fmtSz(it.photoMeta.size)}</span>`:''}
-        ${it.loc?`<span class="loc-badge">\u{1F4CD} ${esc(it.loc)}</span>`:''}`
-      :`${EMO[it.type]||'\u{1F3C5}'}
-        <span class="metal-pill ${mc}">${it.karat}</span>
-        ${it.loc?`<span class="loc-badge">\u{1F4CD} ${esc(it.loc)}</span>`:''}`;
-    const dlBtn=it.photo?`<button class="act dl" onclick="dlImg('${it.id}')">&#8595;</button>`:'';
-    const tkCls=it.metal==='Silver'?' stag':' ktag';
-    return `<div class="card" style="animation-delay:${Math.min(idx,12)*35}ms">
+  grid.innerHTML = list.map((it, idx) => {
+    const mc = (it.metal||'Gold').toLowerCase();
+    const tkCls = it.metal==='Silver' ? ' stag' : ' ktag';
+    const imgPart = it.hasPhoto
+      ? `<img id="ci-${it.id}" src="" alt="${esc(it.name)}" loading="lazy"/>
+         <span class="metal-pill ${mc}">${esc(it.karat)}</span>
+         ${it.photoSize ? `<span class="img-sz">${fmtSz(it.photoSize)}</span>` : ''}
+         ${it.loc ? `<span class="loc-badge">\u{1F4CD} ${esc(it.loc)}</span>` : ''}`
+      : `${EMO[it.type]||'\u{1F3C5}'}
+         <span class="metal-pill ${mc}">${esc(it.karat)}</span>
+         ${it.loc ? `<span class="loc-badge">\u{1F4CD} ${esc(it.loc)}</span>` : ''}`;
+
+    return `<div class="card" style="animation-delay:${Math.min(idx,12)*35}ms" data-id="${it.id}">
       <div class="card-img">${imgPart}</div>
       <div class="card-body">
         <div class="card-name">${esc(it.name)}</div>
         <div class="card-tags">
-          <span class="tag">${it.type}</span>
-          <span class="tag${tkCls}">${it.metal||'Gold'} &#183; ${it.karat}</span>
-          ${it.wt?`<span class="tag">${it.wt}g</span>`:''}
+          <span class="tag">${esc(it.type)}</span>
+          <span class="tag${tkCls}">${esc(it.metal||'Gold')} \u00b7 ${esc(it.karat)}</span>
+          ${it.wt ? `<span class="tag">${it.wt}g</span>` : ''}
         </div>
-        ${it.price?`<div class="card-price">${fmt(it.price)}</div>`:''}
-        ${it.date?`<div class="card-detail">\u{1F4C5} ${it.date}</div>`:''}
-        ${it.bill?`<div class="card-detail">\u{1F4C4} ${esc(it.bill)}</div>`:''}
-        ${it.notes?`<div class="card-detail" style="font-style:italic">${esc(it.notes)}</div>`:''}
+        ${it.price ? `<div class="card-price">${fmt(it.price)}</div>` : ''}
+        ${it.date  ? `<div class="card-detail">\u{1F4C5} ${esc(it.date)}</div>` : ''}
+        ${it.bill  ? `<div class="card-detail">\u{1F4C4} ${esc(it.bill)}</div>` : ''}
+        ${it.notes ? `<div class="card-detail" style="font-style:italic">${esc(it.notes)}</div>` : ''}
         <div class="card-divider"></div>
         <div class="card-actions">
           <button class="act" onclick="openItem('${it.id}')">&#9999;&#65039; Edit</button>
-          ${dlBtn}
+          ${it.hasPhoto ? `<button class="act dl" onclick="dlPhoto('${it.id}')">&#8595;</button>` : ''}
           <button class="act del" onclick="delItem('${it.id}')">&#128465;</button>
         </div>
       </div>
     </div>`;
   }).join('');
+
+  // Lazy-load photos from IndexedDB
+  requestAnimationFrame(() => loadVisiblePhotos());
 }
 
-/* ── ITEM MODAL ── */
-function setMetal(m){
-  curMetal=m;
-  ['Gold','Silver','Other'].forEach(x=>{
-    document.getElementById('mt-'+x.toLowerCase()).className=
-      'mt-btn'+(m===x?' '+x.toLowerCase()+'-active':'');
-  });
-  const ks=m==='Gold'?GK:m==='Silver'?SK:OK;
-  const sel=document.getElementById('f-karat');
-  sel.innerHTML=ks.map(k=>`<option>${k}</option>`).join('');
-}
+// Load photos into img tags from IndexedDB
+const photoURLCache = {};   // id -> objectURL (revoked on delete)
 
-function refreshLocList(){
-  document.getElementById('loc-list').innerHTML=
-    getLocs().map(l=>`<option value="${esc(l)}"/>`).join('');
-}
-
-function openItem(id){
-  editId=id||null; curPhoto=''; curMeta=null; refreshLocList();
-  if(id){
-    const it=items.find(i=>i.id==id);
-    document.getElementById('mi-eye').textContent='Edit Item';
-    document.getElementById('mi-title').textContent='Update Jewelry';
-    const sub=document.getElementById('mi-sub');
-    sub.textContent='\u270F\uFE0F '+it.name; sub.style.display='block';
-    setMetal(it.metal||'Gold');
-    ['type','name','wt','date','price','loc','bill','notes'].forEach(k=>{
-      const el=document.getElementById('f-'+k);
-      if(el) el.value=it[k==='name'?'name':k==='wt'?'wt':k]||'';
-    });
-    document.getElementById('f-type').value=it.type||'Necklace';
-    document.getElementById('f-name').value=it.name||'';
-    document.getElementById('f-wt').value=it.wt||'';
-    document.getElementById('f-date').value=it.date||'';
-    document.getElementById('f-price').value=it.price||'';
-    document.getElementById('f-loc').value=it.loc||'';
-    document.getElementById('f-bill').value=it.bill||'';
-    document.getElementById('f-notes').value=it.notes||'';
-    setTimeout(()=>{ document.getElementById('f-karat').value=it.karat||'22K'; },10);
-    curPhoto=it.photo||''; curMeta=it.photoMeta||null;
-    document.getElementById('save-btn').textContent='\u{1F4BE} Update Item';
-  } else {
-    document.getElementById('mi-eye').textContent='New Item';
-    document.getElementById('mi-title').textContent='Add Jewelry';
-    document.getElementById('mi-sub').style.display='none';
-    ['f-name','f-wt','f-price','f-loc','f-bill','f-notes'].forEach(x=>document.getElementById(x).value='');
-    document.getElementById('f-type').value='Necklace';
-    document.getElementById('f-date').value='';
-    setMetal('Gold');
-    document.getElementById('save-btn').textContent='\u{1F4BE} Save Item';
+async function loadVisiblePhotos() {
+  if (!db) return;
+  const imgs = document.querySelectorAll('[id^="ci-"]');
+  for (const img of imgs) {
+    const id = Number(img.id.slice(3));
+    if (img.src && img.src !== window.location.href) continue;  // already loaded
+    try {
+      if (photoURLCache[id]) { img.src = photoURLCache[id]; continue; }
+      const blob = await dbGet('photos', id);
+      if (blob) {
+        const url = URL.createObjectURL(blob);
+        photoURLCache[id] = url;
+        img.src = url;
+      }
+    } catch {}
   }
-  refreshPhoto(); openOv('ov-item');
 }
 
-function saveItem(){
-  const name=document.getElementById('f-name').value.trim();
-  if(!name){toast('Item name required','err');return;}
-  const it={
-    id:editId||Date.now(), name, metal:curMetal,
-    type: document.getElementById('f-type').value,
-    karat:document.getElementById('f-karat').value,
-    wt:   document.getElementById('f-wt').value,
-    date: document.getElementById('f-date').value,
-    price:document.getElementById('f-price').value,
-    loc:  document.getElementById('f-loc').value.trim(),
-    bill: document.getElementById('f-bill').value.trim(),
-    notes:document.getElementById('f-notes').value,
-    photo:curPhoto, photoMeta:curMeta
-  };
-  if(editId){const i=items.findIndex(x=>x.id==editId);items[i]=it;}
-  else items.push(it);
-  saveItems(); closeOv('ov-item'); renderAll();
-  toast('\u2713 Saved','ok');
+// ── ITEM MODAL ─────────────────────────────────────────────
+function setMetal(m) {
+  curMetal = m;
+  ['Gold','Silver','Other'].forEach(x => {
+    document.getElementById('mt-'+x.toLowerCase()).className =
+      'mt-btn' + (m===x ? ' '+x.toLowerCase()+'-active' : '');
+  });
+  const ks  = m==='Gold' ? GK : m==='Silver' ? SK : OK;
+  const sel = document.getElementById('f-karat');
+  const cur = sel.value;
+  sel.innerHTML = ks.map(k => `<option${k===cur?' selected':''}>${k}</option>`).join('');
 }
 
-function delItem(id){
-  if(!confirm('Delete this item permanently?')) return;
-  items=items.filter(i=>i.id!=id);
-  saveItems(); renderAll(); toast('Deleted');
+function refreshLocList() {
+  document.getElementById('loc-list').innerHTML =
+    getLocs().map(l => `<option value="${esc(l)}"/>`).join('');
 }
 
-/* ── PHOTO ── */
-function rmPhoto(){curPhoto='';curMeta=null;refreshPhoto();}
-function refreshPhoto(){
-  const area=document.getElementById('ph-area'), tags=document.getElementById('ctags');
-  if(curPhoto){
-    let img=area.querySelector('img');
-    if(!img){
-      area.innerHTML='<img/><div class="ph-hover"><button class="ph-rep" onclick="event.stopPropagation();document.getElementById('ph-inp').click()">Replace</button><button class="ph-del" onclick="event.stopPropagation();rmPhoto()">Remove</button></div>';
+async function openItem(id) {
+  editId   = id || null;
+  curBlob  = null;
+  curMeta  = null;
+  refreshLocList();
+
+  if (id) {
+    const it = items.find(i => i.id == id);
+    if (!it) return;
+    document.getElementById('mi-eye').textContent   = 'Edit Item';
+    document.getElementById('mi-title').textContent = 'Update Jewelry';
+    const sub = document.getElementById('mi-sub');
+    sub.textContent  = '\u270F\uFE0F ' + it.name;
+    sub.style.display = 'block';
+    setMetal(it.metal || 'Gold');
+    setTimeout(() => { document.getElementById('f-karat').value = it.karat || '22K'; }, 10);
+    document.getElementById('f-type').value  = it.type  || 'Necklace';
+    document.getElementById('f-name').value  = it.name  || '';
+    document.getElementById('f-wt').value    = it.wt    || '';
+    document.getElementById('f-date').value  = it.date  || '';
+    document.getElementById('f-price').value = it.price || '';
+    document.getElementById('f-loc').value   = it.loc   || '';
+    document.getElementById('f-bill').value  = it.bill  || '';
+    document.getElementById('f-notes').value = it.notes || '';
+
+    // Load existing photo from IndexedDB
+    if (it.hasPhoto && db) {
+      try {
+        curBlob = await dbGet('photos', it.id);
+        if (curBlob) curMeta = { size: curBlob.size };
+      } catch {}
     }
-    area.querySelector('img').src=curPhoto;
-    if(curMeta){document.getElementById('ct-sz').textContent='\u{1F4E6} '+fmtSz(curMeta.size);tags.style.display='flex';}
+    document.getElementById('save-btn').textContent = '\u{1F4BE} Update Item';
   } else {
-    area.innerHTML='<span style="font-size:28px">&#128248;</span><span class="ph-lbl">Tap to add photo</span><span class="ph-hint">Full quality &#183; Saved in backup</span><div class="ph-hover"><button class="ph-rep" onclick="event.stopPropagation();document.getElementById('ph-inp').click()">Replace</button><button class="ph-del" onclick="event.stopPropagation();rmPhoto()">Remove</button></div>';
-    tags.style.display='none';
+    document.getElementById('mi-eye').textContent    = 'New Item';
+    document.getElementById('mi-title').textContent  = 'Add Jewelry';
+    document.getElementById('mi-sub').style.display  = 'none';
+    ['f-name','f-wt','f-price','f-loc','f-bill','f-notes'].forEach(x =>
+      document.getElementById(x).value = '');
+    document.getElementById('f-type').value  = 'Necklace';
+    document.getElementById('f-date').value  = '';
+    setMetal('Gold');
+    document.getElementById('save-btn').textContent = '\u{1F4BE} Save Item';
+  }
+  refreshPhoto();
+  openOv('ov-item');
+}
+
+async function saveItem() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { toast('Item name required', 'err'); return; }
+
+  const id = editId || Date.now();
+  const it = {
+    id,
+    name,
+    metal:  curMetal,
+    type:   document.getElementById('f-type').value,
+    karat:  document.getElementById('f-karat').value,
+    wt:     document.getElementById('f-wt').value,
+    date:   document.getElementById('f-date').value,
+    price:  document.getElementById('f-price').value,
+    loc:    document.getElementById('f-loc').value.trim(),
+    bill:   document.getElementById('f-bill').value.trim(),
+    notes:  document.getElementById('f-notes').value,
+    hasPhoto: !!curBlob,
+    photoSize: curBlob ? curBlob.size : null,
+    ts:     Date.now()
+  };
+
+  // Save photo to IndexedDB
+  if (db) {
+    try {
+      if (curBlob) {
+        await dbPut('photos', id, curBlob);
+        // Refresh URL cache
+        if (photoURLCache[id]) {
+          URL.revokeObjectURL(photoURLCache[id]);
+          delete photoURLCache[id];
+        }
+      } else if (editId) {
+        // Photo was removed
+        await dbDelete('photos', id);
+        if (photoURLCache[id]) {
+          URL.revokeObjectURL(photoURLCache[id]);
+          delete photoURLCache[id];
+        }
+      }
+    } catch(e) { console.warn('Photo save failed:', e); }
+  }
+
+  if (editId) {
+    const idx = items.findIndex(x => x.id == editId);
+    if (idx >= 0) items[idx] = it;
+    else items.push(it);
+  } else {
+    items.push(it);
+  }
+
+  await persist();
+  closeOv('ov-item');
+  renderAll();
+  toast('\u2713 Saved', 'ok');
+}
+
+async function delItem(id) {
+  if (!confirm('Delete this item permanently?')) return;
+  id = Number(id);
+  items = items.filter(i => i.id !== id);
+
+  if (db) {
+    try {
+      await dbDelete('photos', id);
+      if (photoURLCache[id]) {
+        URL.revokeObjectURL(photoURLCache[id]);
+        delete photoURLCache[id];
+      }
+    } catch {}
+  }
+
+  await persist();
+  renderAll();
+  toast('Deleted');
+}
+
+// ── PHOTO ──────────────────────────────────────────────────
+function rmPhoto() { curBlob = null; curMeta = null; refreshPhoto(); }
+
+function refreshPhoto() {
+  const area = document.getElementById('ph-area');
+  const tags = document.getElementById('ctags');
+  const hov  = `<div class="ph-hover">
+    <button class="ph-rep" onclick="event.stopPropagation();document.getElementById('ph-inp').click()">Replace</button>
+    <button class="ph-del" onclick="event.stopPropagation();rmPhoto()">Remove</button>
+  </div>`;
+
+  if (curBlob) {
+    const url = URL.createObjectURL(curBlob);
+    area.innerHTML = `<img src="${url}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"/>${hov}`;
+    if (curMeta) {
+      document.getElementById('ct-sz').textContent = '\u{1F4E6} ' + fmtSz(curMeta.size);
+      tags.style.display = 'flex';
+    }
+  } else {
+    area.innerHTML = `<span style="font-size:28px">&#128248;</span>
+      <span class="ph-lbl">Tap to add photo</span>
+      <span class="ph-hint">Full quality \u00b7 Stored in IndexedDB</span>${hov}`;
+    tags.style.display = 'none';
   }
 }
-async function handlePhoto(inp){
-  const file=inp.files[0]; if(!file) return;
-  const area=document.getElementById('ph-area');
-  area.innerHTML='<div class="proc">&#9203; Converting to WebP&hellip;</div>';
-  try{
-    const r=await toWebP(file);
-    curPhoto=r.dataUrl; curMeta={size:r.size};
-    refreshPhoto(); toast('\u2713 Photo ready \u00b7 '+fmtSz(r.size),'ok');
-  }catch{area.innerHTML='<span style="color:#E07070">&#9888; Failed</span>';}
-  inp.value='';
+
+async function handlePhoto(inp) {
+  const file = inp.files[0];
+  if (!file) return;
+  const area = document.getElementById('ph-area');
+  area.innerHTML = '<div class="proc">&#9203; Processing&hellip;</div>';
+  try {
+    const blob = await photoToWebP(file);
+    curBlob = blob;
+    curMeta = { size: blob.size };
+    refreshPhoto();
+    toast('\u2713 Photo ready \u00b7 ' + fmtSz(blob.size), 'ok');
+  } catch(e) {
+    area.innerHTML = '<span style="color:#E07070">&#9888; Failed: ' + e.message + '</span>';
+  }
+  inp.value = '';
 }
-function toWebP(file){
-  return new Promise(resolve=>{
-    const img=new Image(), url=URL.createObjectURL(file);
-    img.onload=()=>{
+
+function photoToWebP(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
       URL.revokeObjectURL(url);
-      let w=img.naturalWidth, h=img.naturalHeight;
-      if(w>4000||h>4000){const r=Math.min(4000/w,4000/h);w=Math.round(w*r);h=Math.round(h*r);}
-      const c=document.createElement('canvas'); c.width=w; c.height=h;
-      c.getContext('2d').drawImage(img,0,0,w,h);
-      const d=c.toDataURL('image/webp',0.92);
-      resolve({dataUrl:d,size:Math.round((d.length-22)*3/4)});
+      let w = img.naturalWidth, h = img.naturalHeight;
+      // Scale down if > 4000px on any side, preserve aspect ratio
+      if (w > 4000 || h > 4000) {
+        const r = Math.min(4000/w, 4000/h);
+        w = Math.round(w * r);
+        h = Math.round(h * r);
+      }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      c.toBlob(blob => {
+        if (blob) resolve(blob);
+        else reject(new Error('Canvas toBlob failed'));
+      }, 'image/webp', 0.92);
     };
-    img.onerror=()=>{URL.revokeObjectURL(url);resolve(null);};
-    img.src=url;
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
+    img.src = url;
   });
 }
 
-/* ── GALLERY ── */
-function openGallery(){galFilter='All';renderGallery();openOv('ov-gallery');}
+// ── DOWNLOAD PHOTO ─────────────────────────────────────────
+async function dlPhoto(id) {
+  id = Number(id);
+  const it = items.find(i => i.id === id);
+  if (!it || !it.hasPhoto || !db) return;
+  try {
+    const blob = await dbGet('photos', id);
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const a   = document.createElement('a');
+    a.href     = url;
+    a.download = (it.name||'photo').replace(/[^a-z0-9]/gi,'_').toLowerCase() + '_' + id + '.webp';
+    a.click();
+    URL.revokeObjectURL(url);
+  } catch {}
+}
 
-function renderGallery(){
-  const pics=items.filter(i=>i.photo);
-  document.getElementById('gal-sub').textContent=pics.length+' photo'+(pics.length!==1?'s':'');
+// ── GALLERY ─────────────────────────────────────────────────
+function openGallery() { galFilter='All'; renderGallery(); openOv('ov-gallery'); }
 
-  // Filter chips by metal
-  const gMs=['All',...[...new Set(pics.map(i=>i.metal||'Gold'))]];
-  document.getElementById('gal-chips').innerHTML=gMs.map(m=>{
-    const lbl=m==='All'?'All':m==='Gold'?'\u{1F947} Gold':m==='Silver'?'\u{1F948} Silver':'\u{1F4A0} Other';
+function renderGallery() {
+  const pics = items.filter(i => i.hasPhoto);
+  document.getElementById('gal-sub').textContent = pics.length + ' photo' + (pics.length!==1?'s':'');
+
+  const gMs = ['All', ...[...new Set(pics.map(i => i.metal||'Gold'))]];
+  document.getElementById('gal-chips').innerHTML = gMs.map(m => {
+    const lbl = m==='All'?'All':m==='Gold'?'\u{1F947} Gold':m==='Silver'?'\u{1F948} Silver':'\u{1F4A0} Other';
     return `<button class="chip${m===galFilter?' active':''}" onclick="galF('${m}')">${lbl}</button>`;
   }).join('');
 
-  const fl=galFilter==='All'?pics:pics.filter(i=>(i.metal||'Gold')===galFilter);
-  lbPhotos=fl;
+  lbItems = galFilter==='All' ? pics : pics.filter(i => (i.metal||'Gold')===galFilter);
 
-  if(!fl.length){
-    document.getElementById('gal-grid').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text3)">No photos yet</div>';
+  if (!lbItems.length) {
+    document.getElementById('gal-grid').innerHTML =
+      '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text3)">No photos yet</div>';
     return;
   }
-  document.getElementById('gal-grid').innerHTML=fl.map((it,idx)=>`
-    <div class="gal-thumb" onclick="openLB(${idx})">
-      <img src="${it.photo}" alt="${esc(it.name)}" loading="lazy"/>
+
+  document.getElementById('gal-grid').innerHTML = lbItems.map((it,idx) =>
+    `<div class="gal-thumb" onclick="openLB(${idx})">
+      <img id="gi-${it.id}" src="" alt="${esc(it.name)}" loading="lazy"/>
       <div class="gal-ov">
-        <span class="gal-pill ${(it.metal||'Gold').toLowerCase()}">${it.metal||'Gold'} &#183; ${it.karat}</span>
+        <span class="gal-pill ${(it.metal||'Gold').toLowerCase()}">${esc(it.metal||'Gold')} \u00b7 ${esc(it.karat)}</span>
         <span class="gal-name">${esc(it.name)}</span>
-        ${it.loc?`<span style="font-size:9px;color:#A8C8E8">\u{1F4CD} ${esc(it.loc)}</span>`:''}
+        ${it.loc ? `<span style="font-size:9px;color:#A8C8E8">\u{1F4CD} ${esc(it.loc)}</span>` : ''}
       </div>
     </div>`
   ).join('');
+
+  requestAnimationFrame(() => loadGalleryPhotos());
 }
 
-function galF(m){galFilter=m;renderGallery();}
+async function loadGalleryPhotos() {
+  if (!db) return;
+  for (const it of lbItems) {
+    const img = document.getElementById('gi-'+it.id);
+    if (!img || (img.src && img.src !== window.location.href)) continue;
+    try {
+      if (photoURLCache[it.id]) { img.src = photoURLCache[it.id]; continue; }
+      const blob = await dbGet('photos', it.id);
+      if (blob) {
+        const url = URL.createObjectURL(blob);
+        photoURLCache[it.id] = url;
+        img.src = url;
+      }
+    } catch {}
+  }
+}
 
-/* ── LIGHTBOX ── */
-function openLB(idx){
-  lbIdx=idx; showLB();
+function galF(m) { galFilter=m; renderGallery(); }
+
+// ── LIGHTBOX ────────────────────────────────────────────────
+async function openLB(idx) {
+  lbIdx = idx;
+  await showLB();
   document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
-function closeLB(){
+function closeLB() {
   document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 }
-function lbNav(d){lbIdx=(lbIdx+d+lbPhotos.length)%lbPhotos.length;showLB();}
-function showLB(){
-  const it=lbPhotos[lbIdx];
-  document.getElementById('lb-img').src=it.photo;
-  document.getElementById('lb-name').textContent=it.name;
-  document.getElementById('lb-meta').textContent=
-    [it.metal,it.karat,it.wt?it.wt+'g':'',it.price?fmt(it.price):'',it.date?it.date:''].filter(Boolean).join(' \u00b7 ');
-  document.getElementById('lb-loc').textContent=it.loc?'\u{1F4CD} '+it.loc:'';
-  document.getElementById('lb-counter').textContent=(lbIdx+1)+' / '+lbPhotos.length;
-  const show=lbPhotos.length>1;
-  document.getElementById('lb-prev').style.display=show?'flex':'none';
-  document.getElementById('lb-next').style.display=show?'flex':'none';
+async function lbNav(d) { lbIdx = (lbIdx+d+lbItems.length)%lbItems.length; await showLB(); }
+
+async function showLB() {
+  const it  = lbItems[lbIdx];
+  const img = document.getElementById('lb-img');
+  img.src   = '';
+  try {
+    let url = photoURLCache[it.id];
+    if (!url && db) {
+      const blob = await dbGet('photos', it.id);
+      if (blob) { url = URL.createObjectURL(blob); photoURLCache[it.id] = url; }
+    }
+    if (url) img.src = url;
+  } catch {}
+  document.getElementById('lb-name').textContent = it.name;
+  document.getElementById('lb-meta').textContent =
+    [it.metal, it.karat, it.wt?it.wt+'g':'', it.price?fmt(it.price):'', it.date||''].filter(Boolean).join(' \u00b7 ');
+  document.getElementById('lb-loc').textContent = it.loc ? '\u{1F4CD} '+it.loc : '';
+  document.getElementById('lb-counter').textContent = (lbIdx+1)+' / '+lbItems.length;
+  const show = lbItems.length > 1;
+  document.getElementById('lb-prev').style.display = show ? 'flex' : 'none';
+  document.getElementById('lb-next').style.display = show ? 'flex' : 'none';
 }
-function lbDl(){
-  const it=lbPhotos[lbIdx]; if(!it?.photo) return;
-  const a=document.createElement('a');
-  a.href=it.photo; a.download=it.name.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.webp'; a.click();
+
+async function lbDl() {
+  const it = lbItems[lbIdx];
+  if (!it || !it.hasPhoto || !db) return;
+  try {
+    const blob = await dbGet('photos', it.id);
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const a   = document.createElement('a');
+    a.href     = url;
+    a.download = (it.name||'photo').replace(/[^a-z0-9]/gi,'_').toLowerCase()+'.webp';
+    a.click();
+    URL.revokeObjectURL(url);
+  } catch {}
 }
+
 // Swipe
-let lbTX=0;
-document.getElementById('lightbox').addEventListener('touchstart',e=>lbTX=e.touches[0].clientX,{passive:true});
-document.getElementById('lightbox').addEventListener('touchend',e=>{
-  const dx=e.changedTouches[0].clientX-lbTX;
-  if(Math.abs(dx)>50) lbNav(dx<0?1:-1);
+let lbTX = 0;
+document.getElementById('lightbox').addEventListener('touchstart', e => lbTX=e.touches[0].clientX, {passive:true});
+document.getElementById('lightbox').addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - lbTX;
+  if (Math.abs(dx) > 50) lbNav(dx < 0 ? 1 : -1);
 });
-document.addEventListener('keydown',e=>{
-  if(!document.getElementById('lightbox').classList.contains('open')) return;
-  if(e.key==='ArrowRight') lbNav(1);
-  if(e.key==='ArrowLeft')  lbNav(-1);
-  if(e.key==='Escape')     closeLB();
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key==='ArrowRight') lbNav(1);
+  if (e.key==='ArrowLeft')  lbNav(-1);
+  if (e.key==='Escape')     closeLB();
 });
 
-/* ── BILLS VIEW ── */
-function openBills(){
-  const hb=items.filter(i=>i.bill);
-  document.getElementById('bills-sub').textContent=hb.length+' record'+(hb.length!==1?'s':'');
-  if(!hb.length){
-    document.getElementById('bill-list').innerHTML='<div class="no-bills">&#128196; No bill references added yet</div>';
+// ── BILLS VIEW ──────────────────────────────────────────────
+function openBills() {
+  const hb = items.filter(i => i.bill);
+  document.getElementById('bills-sub').textContent = hb.length + ' record'+(hb.length!==1?'s':'');
+  if (!hb.length) {
+    document.getElementById('bill-list').innerHTML =
+      '<div class="no-bills">&#128196; No bill references added yet</div>';
   } else {
-    // Sort by date descending
-    const sorted=[...hb].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
-    document.getElementById('bill-list').innerHTML=sorted.map(it=>`
-      <div class="bill-card" onclick="closeOv('ov-bills');setTimeout(()=>openItem('${it.id}'),200)">
+    const sorted = [...hb].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+    document.getElementById('bill-list').innerHTML = sorted.map(it =>
+      `<div class="bill-card" onclick="closeOv('ov-bills');setTimeout(()=>openItem('${it.id}'),200)">
         <div class="bill-icon">${EMO[it.type]||'\u{1F3C5}'}</div>
         <div class="bill-info">
           <div class="bill-ref">&#128196; ${esc(it.bill)}</div>
           <div class="bill-item">${esc(it.name)}</div>
           <div class="bill-meta">
-            <span>${it.metal||'Gold'} &#183; ${it.karat}</span>
-            ${it.wt?`<span>${it.wt}g</span>`:''}
-            ${it.date?`<span>\u{1F4C5} ${it.date}</span>`:''}
-            ${it.loc?`<span>\u{1F4CD} ${esc(it.loc)}</span>`:''}
+            <span>${esc(it.metal||'Gold')} \u00b7 ${esc(it.karat)}</span>
+            ${it.wt   ? `<span>${it.wt}g</span>` : ''}
+            ${it.date ? `<span>\u{1F4C5} ${esc(it.date)}</span>` : ''}
+            ${it.loc  ? `<span>\u{1F4CD} ${esc(it.loc)}</span>`  : ''}
           </div>
         </div>
-        ${it.price?`<div class="bill-price">${fmt(it.price)}</div>`:''}
+        ${it.price ? `<div class="bill-price">${fmt(it.price)}</div>` : ''}
       </div>`
     ).join('');
   }
   openOv('ov-bills');
 }
 
-/* ── DOWNLOAD ── */
-function dlImg(id){
-  const it=items.find(i=>i.id==id); if(!it?.photo) return;
-  const a=document.createElement('a');
-  a.href=it.photo;
-  a.download=it.name.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'_'+it.id+'.webp';
-  a.click();
+// ── EXPORT / BACKUP ─────────────────────────────────────────
+
+// Build full export data: metadata + photos as base64
+async function buildExportData() {
+  const exportItems = [];
+  for (const it of items) {
+    const clone = Object.assign({}, it);
+    if (it.hasPhoto && db) {
+      try {
+        const blob = await dbGet('photos', it.id);
+        if (blob) clone.photo = await blobToDataUrl(blob);
+      } catch {}
+    }
+    exportItems.push(clone);
+  }
+  return {
+    version:  6,
+    exported: new Date().toISOString(),
+    count:    exportItems.length,
+    items:    exportItems
+  };
 }
-async function exportPhotos(){
-  const pics=items.filter(i=>i.photo);
-  if(!pics.length){toast('No photos to export','err');return;}
-  if(!window.JSZip){
-    await new Promise((res,rej)=>{
-      const s=document.createElement('script');
-      s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+
+function dlBlob(data, mime, filename) {
+  const blob = data instanceof ArrayBuffer
+    ? new Blob([data], {type:mime})
+    : new Blob([data], {type:mime});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+async function manualBackup() {
+  toast('\u23F3 Preparing backup\u2026', '', 30000);
+  try {
+    const data = await buildExportData();
+    dlBlob(JSON.stringify(data, null, 2), 'application/json',
+           'jewelry_vault_'+today()+'.json');
+    toast('\u2713 JSON backup downloaded', 'ok');
+  } catch(e) { toast('Backup failed: '+e.message, 'err', 5000); }
+}
+
+async function encBackup() {
+  const pw = document.getElementById('enc-pw').value.trim();
+  if (!pw) { toast('Enter backup password first','err'); return; }
+  toast('\u23F3 Encrypting\u2026','',30000);
+  try {
+    const data = await buildExportData();
+    const enc  = await aesEncrypt(JSON.stringify(data), pw);
+    dlBlob(enc, 'application/octet-stream', 'jewelry_vault_'+today()+'.ejv');
+    toast('\u2713 Encrypted backup downloaded', 'ok');
+  } catch(e) { toast('Encryption failed: '+e.message,'err',5000); }
+}
+
+async function exportBoth() {
+  const pw = document.getElementById('enc-pw').value.trim();
+  if (!pw) { toast('Enter backup password first','err'); return; }
+  toast('\u23F3 Preparing both files\u2026','',30000);
+  try {
+    const data = await buildExportData();
+    // 1. Plain JSON
+    dlBlob(JSON.stringify(data,null,2),'application/json','jewelry_vault_'+today()+'.json');
+    await sleep(600);
+    // 2. Encrypted
+    const enc = await aesEncrypt(JSON.stringify(data), pw);
+    dlBlob(enc,'application/octet-stream','jewelry_vault_'+today()+'.ejv');
+    toast('\u2713 Both files downloaded','ok');
+  } catch(e) { toast('Export failed: '+e.message,'err',5000); }
+}
+
+// Universal import — auto-detects JSON or .ejv
+function universalRestore(inp) {
+  const file = inp.files[0]; if (!file) return;
+  if (file.name.toLowerCase().endsWith('.ejv')) decRestore(file);
+  else plainRestore(file);
+  inp.value = '';
+}
+
+function plainRestore(file) {
+  const r = new FileReader();
+  r.onload = async e => {
+    try {
+      const raw  = JSON.parse(e.target.result);
+      const data = Array.isArray(raw) ? raw : (raw.items || []);
+      if (!data.length) { toast('No items in backup','err'); return; }
+      if (!confirm('Restore '+data.length+' items?\nCurrent data will be replaced.')) return;
+      await importItems(data);
+      toast('\u2713 Restored '+data.length+' items','ok');
+    } catch { toast('Invalid JSON backup','err'); }
+  };
+  r.readAsText(file);
+}
+
+async function decRestore(file) {
+  const pw = document.getElementById('enc-pw').value.trim();
+  if (!pw) { toast('Enter backup password first','err',4000); return; }
+  try {
+    const buf   = await file.arrayBuffer();
+    const plain = await aesDecrypt(buf, pw);
+    const raw   = JSON.parse(plain);
+    const data  = Array.isArray(raw) ? raw : (raw.items || []);
+    if (!data.length) { toast('No items in backup','err'); return; }
+    if (!confirm('Restore '+data.length+' items?\nCurrent data will be replaced.')) return;
+    await importItems(data);
+    toast('\u2713 Restored '+data.length+' items from encrypted backup','ok');
+  } catch(e) {
+    const msg = e.message || '';
+    toast(msg.includes('decrypt')||msg.includes('OperationError') ?
+      '\u274C Wrong password' : 'Restore failed: '+msg, 'err', 5000);
+  }
+}
+
+// Import items (both plain + encrypted share this path)
+async function importItems(data) {
+  // Clear existing photo cache
+  Object.keys(photoURLCache).forEach(k => {
+    URL.revokeObjectURL(photoURLCache[k]);
+    delete photoURLCache[k];
+  });
+
+  const newItems = [];
+  for (const it of data) {
+    const clone = Object.assign({}, it);
+    // Move base64 photo to IndexedDB if present
+    if (it.photo && typeof it.photo === 'string' && it.photo.startsWith('data:') && db) {
+      try {
+        const blob = dataUrlToBlob(it.photo);
+        await dbPut('photos', it.id, blob);
+        clone.hasPhoto   = true;
+        clone.photoSize  = blob.size;
+        delete clone.photo;
+        delete clone.photoMeta;
+      } catch {}
+    }
+    newItems.push(clone);
+  }
+
+  items = newItems;
+  await persist();
+  renderAll();
+}
+
+// Photos ZIP export
+async function exportPhotos() {
+  const pics = items.filter(i => i.hasPhoto);
+  if (!pics.length) { toast('No photos to export','err'); return; }
+  if (!window.JSZip) {
+    await new Promise((res,rej) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
       s.onload=res; s.onerror=rej; document.head.appendChild(s);
     });
   }
-  const zip=new JSZip(), f=zip.folder('jewelry-images');
-  pics.forEach(it=>f.file(
-    (it.metal||'gold').toLowerCase()+'_'+it.name.replace(/[^a-z0-9]/gi,'_').toLowerCase()+'_'+it.id+'.webp',
-    it.photo.split(',')[1],{base64:true}
-  ));
-  const blob=await zip.generateAsync({type:'blob'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob); a.download='jewelry-photos.zip'; a.click();
+  const zip = new JSZip(), f = zip.folder('jewelry-photos');
+  for (const it of pics) {
+    try {
+      const blob = await dbGet('photos', it.id);
+      if (!blob) continue;
+      const ab   = await blob.arrayBuffer();
+      f.file((it.metal||'gold').toLowerCase()+'_'+
+        (it.name||'item').replace(/[^a-z0-9]/gi,'_').toLowerCase()+'_'+it.id+'.webp',
+        ab);
+    } catch {}
+  }
+  const blob = await zip.generateAsync({type:'blob'});
+  const a    = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'jewelry-photos.zip';
+  a.click();
   URL.revokeObjectURL(a.href);
   toast('\u2713 '+pics.length+' photos exported','ok');
 }
 
-/* ── BACKUP — photos included as base64! ── */
-function manualBackup(){
-  const blob=new Blob([JSON.stringify({version:5,exported:new Date().toISOString(),count:items.length,items},null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='jewelry_vault_'+new Date().toISOString().slice(0,10)+'.json';
-  a.click(); URL.revokeObjectURL(a.href);
-  toast('\u2713 Backup downloaded (photos included)','ok');
+// ── AES-256-GCM ─────────────────────────────────────────────
+async function deriveKey(pw, salt) {
+  const enc  = new TextEncoder();
+  const base = await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey(
+    {name:'PBKDF2',salt,iterations:310000,hash:'SHA-256'},
+    base, {name:'AES-GCM',length:256}, false, ['encrypt','decrypt']
+  );
 }
-function manualRestore(inp){
-  const file=inp.files[0]; if(!file) return;
-  const r=new FileReader();
-  r.onload=e=>{
-    try{
-      const raw=JSON.parse(e.target.result);
-      const data=Array.isArray(raw)?raw:(raw.items||[]);
-      if(!data.length){toast('No items in backup','err');return;}
-      if(!confirm('Restore '+data.length+' items? Current data will be replaced.')) return;
-      items=data; saveItems(); renderAll();
-      toast('\u2713 Restored '+data.length+' items','ok');
-    }catch{toast('Invalid backup file','err');}
-  };
-  r.readAsText(file); inp.value='';
+async function aesEncrypt(plaintext, pw) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv   = crypto.getRandomValues(new Uint8Array(12));
+  const key  = await deriveKey(pw, salt);
+  const ct   = await crypto.subtle.encrypt({name:'AES-GCM',iv}, key, new TextEncoder().encode(plaintext));
+  const out  = new Uint8Array(4+16+12+ct.byteLength);
+  out.set([69,74,86,49],0); out.set(salt,4); out.set(iv,20);
+  out.set(new Uint8Array(ct),32);
+  return out.buffer;
+}
+async function aesDecrypt(buf, pw) {
+  const data  = new Uint8Array(buf);
+  if (String.fromCharCode(...data.slice(0,4)) !== 'EJV1')
+    throw new Error('Not a valid .ejv file');
+  const key   = await deriveKey(pw, data.slice(4,20));
+  const plain = await crypto.subtle.decrypt({name:'AES-GCM',iv:data.slice(20,32)}, key, data.slice(32));
+  return new TextDecoder().decode(plain);
 }
 
-/* ── SETTINGS ── */
-function openSettings(section){
-  document.getElementById('s-cid').value=cfg.cid||'';
-  document.getElementById('s-pin').value='';
-  updateDriveUI(); openOv('ov-set');
-  if(section==='drive') setTimeout(()=>document.getElementById('s-drive-sec').scrollIntoView({behavior:'smooth'}),200);
+function toggleEncPw() {
+  const inp = document.getElementById('enc-pw');
+  const eye = document.getElementById('enc-eye');
+  if (inp.type==='password') { inp.type='text';     eye.textContent='\uD83D\uDE48'; }
+  else                       { inp.type='password'; eye.textContent='\uD83D\uDC41\uFE0F'; }
 }
-function saveSettings(){
-  const cid=document.getElementById('s-cid').value.trim();
-  if(cid&&cid!==cfg.cid){cfg.cid=cid;driveOn=false;driveToken=null;gapiOk=false;}
+
+// ── SETTINGS ────────────────────────────────────────────────
+function openSettings(section) {
+  const cid = cfg.cid || HARDCODED_CID;
+  if (HARDCODED_CID) {
+    document.getElementById('cid-hardcoded').style.display = 'block';
+    document.getElementById('s-cid').style.display = 'none';
+  } else {
+    document.getElementById('cid-hardcoded').style.display = 'none';
+    document.getElementById('s-cid').style.display = 'block';
+    document.getElementById('s-cid').value = cid || '';
+  }
+  document.getElementById('s-pin').value = '';
+  updateDriveUI();
+  openOv('ov-set');
+  if (section==='drive')
+    setTimeout(() => document.getElementById('s-drive-sec').scrollIntoView({behavior:'smooth'}),200);
+  if (section==='backup')
+    setTimeout(() => document.getElementById('s-backup-sec').scrollIntoView({behavior:'smooth'}),200);
+}
+
+function saveSettings() {
+  // Client ID is hardcoded — no manual entry needed
+  cfg.cid = HARDCODED_CID;
   saveCfg(); closeOv('ov-set'); toast('\u2713 Settings saved','ok');
 }
-function changePin(){
-  const p=document.getElementById('s-pin').value.trim();
-  if(!/^\d{4}$/.test(p)){toast('PIN must be 4 digits','err');return;}
+
+function changePin() {
+  const p = document.getElementById('s-pin').value.trim();
+  if (!/^\d{4}$/.test(p)) { toast('PIN must be 4 digits','err'); return; }
   userPin=p; cfg.pin=p; saveCfg();
-  document.getElementById('s-pin').value='';
+  document.getElementById('s-pin').value = '';
   toast('\u2713 PIN updated','ok');
 }
 
-/* ── OVERLAYS ── */
-function openOv(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
-function closeOv(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+// ── OVERLAYS ────────────────────────────────────────────────
+function openOv(id)  { document.getElementById(id).classList.add('open');    document.body.style.overflow='hidden'; }
+function closeOv(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow='';       }
 
-/* ── GOOGLE DRIVE ── */
-function loadScript(src){return new Promise((res,rej)=>{const s=document.createElement('script');s.src=src;s.onload=res;s.onerror=rej;document.head.appendChild(s);});}
-async function initDrive(cid){
-  setDS('busy','Loading Google APIs\u2026');
-  try{
-    if(!window.gapi) await loadScript('https://apis.google.com/js/api.js');
-    if(!window.google?.accounts) await loadScript('https://accounts.google.com/gsi/client');
-    await new Promise((res,rej)=>gapi.load('client',async()=>{
-      try{await gapi.client.init({discoveryDocs:['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']});gapiOk=true;res();}
-      catch(e){rej(e);}
+// ── GOOGLE DRIVE ─────────────────────────────────────────────
+function loadScript(src) {
+  return new Promise((res,rej) => {
+    const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=rej;
+    document.head.appendChild(s);
+  });
+}
+
+async function initDrive(cid) {
+  setSyncUI('busy','Loading Google APIs\u2026');
+  try {
+    if (!window.gapi)            await loadScript('https://apis.google.com/js/api.js');
+    if (!window.google?.accounts) await loadScript('https://accounts.google.com/gsi/client');
+    await new Promise((res,rej) => gapi.load('client', async () => {
+      try {
+        await gapi.client.init({
+          discoveryDocs:['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest']
+        });
+        gapiOk = true; res();
+      } catch(e) { rej(e); }
     }));
-    tokenClient=google.accounts.oauth2.initTokenClient({
-      client_id:cid,scope:'https://www.googleapis.com/auth/drive.file',callback:onDriveToken
+    tokenClient = google.accounts.oauth2.initTokenClient({
+      client_id: cid, scope:'https://www.googleapis.com/auth/drive.file',
+      callback: onDriveToken
     });
-    setDS('','Ready \u2014 tap connect'); return true;
-  }catch{setDS('err','Failed to load Google APIs');return false;}
-}
-function onDriveToken(resp){
-  if(resp.error){setDS('err','Auth failed: '+resp.error);return;}
-  driveToken=resp.access_token; driveOn=true;
-  cfg.driveAuto=true; saveCfg();
-  setDS('ok','Connected \u2713'); updateDriveUI();
-  toast('\u2601\uFE0F Drive connected','ok'); findDriveFile();
-}
-async function toggleDrive(){
-  if(driveOn){
-    driveOn=false;driveToken=null;driveFileId=null;cfg.driveAuto=false;saveCfg();
-    try{google.accounts.oauth2.revoke(driveToken,()=>{});}catch{}
-    setDS('','Disconnected'); updateDriveUI(); toast('Drive disconnected'); return;
+    setSyncUI('','Ready \u2014 tap connect');
+    return true;
+  } catch(e) {
+    setSyncUI('err','Failed to load Google APIs');
+    return false;
   }
-  const cid=document.getElementById('s-cid').value.trim()||cfg.cid;
-  if(!cid){toast('Enter Client ID first','err');return;}
-  cfg.cid=cid; saveCfg();
-  const ok=await initDrive(cid);
-  if(ok&&tokenClient) tokenClient.requestAccessToken({prompt:'consent'});
 }
-async function findDriveFile(){
-  if(!gapiOk||!driveToken) return;
-  gapi.client.setToken({access_token:driveToken});
-  try{
-    const r=await gapi.client.drive.files.list({q:`name='${DRIVE_FILE}' and trashed=false`,fields:'files(id)',spaces:'drive'});
-    if(r.result.files?.length) driveFileId=r.result.files[0].id;
-  }catch{}
+
+function onDriveToken(resp) {
+  if (resp.error) { setSyncUI('err','Auth failed: '+resp.error); return; }
+  driveToken = resp.access_token;
+  driveOn    = true;
+  cfg.driveAuto = true;
+  saveCfg();
+  updateDriveUI();
+  setSyncUI('ok','Connected \u2713');
+  toast('\u2601\uFE0F Drive connected','ok');
+  // Immediately sync everything
+  findDriveFiles().then(() => driveSync(true));
 }
-async function driveBackup(){
-  if(!driveOn||!driveToken){toast('Connect Drive first','err');return;}
-  setDS('busy','Backing up\u2026'); gapi.client.setToken({access_token:driveToken});
-  try{
-    const content=JSON.stringify({version:5,exported:new Date().toISOString(),items});
-    const b='----GJV'+Date.now();
-    const body=`--${b}\r\nContent-Type: application/json\r\n\r\n${JSON.stringify({name:DRIVE_FILE,mimeType:'application/json'})}\r\n--${b}\r\nContent-Type: application/json\r\n\r\n${content}\r\n--${b}--`;
-    const url=driveFileId?`https://www.googleapis.com/upload/drive/v3/files/${driveFileId}?uploadType=multipart`:`https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart`;
-    const resp=await fetch(url,{method:driveFileId?'PATCH':'POST',headers:{'Authorization':'Bearer '+driveToken,'Content-Type':`multipart/related; boundary=${b}`},body});
-    if(!resp.ok) throw new Error(await resp.text());
-    const data=await resp.json(); driveFileId=data.id;
-    document.getElementById('drive-sync').textContent='Synced '+new Date().toLocaleTimeString();
-    setDS('ok','Backed up \u2713'); toast('\u2601\uFE0F Backed up to Drive','ok');
-  }catch(e){setDS('err','Backup failed');toast('Backup failed: '+e.message,'err',5000);}
+
+async function toggleDrive() {
+  if (driveOn) {
+    driveOn=false; driveToken=null; driveFileIds={}; cfg.driveAuto=false; saveCfg();
+    try { google.accounts.oauth2.revoke(driveToken, ()=>{}); } catch {}
+    setSyncUI('','Disconnected'); updateDriveUI();
+    toast('Drive disconnected'); return;
+  }
+  const cid = HARDCODED_CID;
+  cfg.cid = cid; saveCfg();
+  const ok = await initDrive(cid);
+  if (ok && tokenClient) tokenClient.requestAccessToken({prompt:'consent'});
 }
-async function driveRestore(){
-  if(!driveOn||!driveToken){toast('Connect Drive first','err');return;}
-  setDS('busy','Fetching\u2026'); gapi.client.setToken({access_token:driveToken});
-  try{
-    await findDriveFile();
-    if(!driveFileId){toast('No backup found in Drive','err');setDS('ok','Connected');return;}
-    const resp=await fetch(`https://www.googleapis.com/drive/v3/files/${driveFileId}?alt=media`,{headers:{'Authorization':'Bearer '+driveToken}});
-    if(!resp.ok) throw new Error(await resp.text());
-    const raw=await resp.json(); const data=Array.isArray(raw)?raw:(raw.items||[]);
-    if(!data.length) throw new Error('Empty backup');
-    if(!confirm('Restore '+data.length+' items from Drive? Current data replaced.')) {setDS('ok','Connected');return;}
-    items=data; saveItems(); renderAll();
-    setDS('ok','Restored \u2713'); toast('\u2713 Restored '+data.length+' items','ok');
-  }catch(e){setDS('err','Restore failed');toast('Restore failed: '+e.message,'err',5000);}
+
+function updateDriveUI() {
+  const btn  = document.getElementById('drive-conn-btn');
+  const st   = document.getElementById('drive-conn-st');
+  const acts = document.getElementById('drive-acts');
+  const hbtn = document.getElementById('drive-btn');
+  if (!btn) return;
+  if (driveOn) {
+    btn.textContent='Disconnect Drive'; btn.classList.add('on');
+    st.textContent='\u2713 Connected'; st.style.color='#6ABA5A';
+    acts.style.display='block';
+  } else {
+    btn.textContent='Connect Google Drive'; btn.classList.remove('on');
+    st.textContent=''; acts.style.display='none';
+  }
+  if (hbtn) hbtn.classList.toggle('on', driveOn);
 }
-function scheduleDriveBackup(){clearTimeout(driveTimer);if(driveOn)driveTimer=setTimeout(driveBackup,3000);}
-function setDS(state,msg){
-  const bar=document.getElementById('drive-bar');
-  bar.style.display=msg?'flex':'none';
-  document.getElementById('drive-dot').className='ddot'+(state?' '+state:'');
-  document.getElementById('drive-msg').textContent=msg;
-  const btn=document.getElementById('drive-btn');
-  if(btn) btn.classList.toggle('on',state==='ok');
+
+// Find existing Drive file IDs
+async function findDriveFiles() {
+  if (!gapiOk || !driveToken) return;
+  gapi.client.setToken({access_token: driveToken});
+  try {
+    const r = await gapi.client.drive.files.list({
+      q: `(name='${DRIVE_CUR}' or name='${DRIVE_PREV}' or name='${DRIVE_TEMP}') and trashed=false`,
+      fields: 'files(id,name)', spaces:'drive'
+    });
+    (r.result.files||[]).forEach(f => { driveFileIds[f.name] = f.id; });
+  } catch {}
 }
-function updateDriveUI(){
-  const btn=document.getElementById('drive-conn-btn'),st=document.getElementById('drive-conn-st'),acts=document.getElementById('drive-acts');
-  if(!btn) return;
-  if(driveOn){btn.textContent='Disconnect Drive';btn.classList.add('on');st.textContent='\u2713 Connected';st.style.color='#6ABA5A';acts.style.display='block';}
-  else{btn.textContent='Connect Google Drive';btn.classList.remove('on');st.textContent='';acts.style.display='none';}
+
+// ── ATOMIC DRIVE WRITE ──────────────────────────────────────
+// Writes: temp → verify → promote prev → promote current → delete temp
+async function safeDriveWrite(jsonStr) {
+  gapi.client.setToken({access_token: driveToken});
+  const boundary = '----GJV' + Date.now();
+
+  // Helper: multipart upload
+  async function upload(name, fileId, data) {
+    const meta = JSON.stringify({name, mimeType:'application/json'});
+    const body = `--${boundary}\r\nContent-Type: application/json\r\n\r\n${meta}\r\n`+
+                 `--${boundary}\r\nContent-Type: application/json\r\n\r\n${data}\r\n`+
+                 `--${boundary}--`;
+    const url  = fileId
+      ? `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=multipart`
+      : `https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart`;
+    const resp = await fetch(url, {
+      method: fileId ? 'PATCH' : 'POST',
+      headers:{
+        'Authorization':'Bearer '+driveToken,
+        'Content-Type':`multipart/related; boundary=${boundary}`
+      }, body
+    });
+    if (!resp.ok) throw new Error('Drive upload failed: '+(await resp.text()).slice(0,200));
+    const d = await resp.json();
+    return d.id;
+  }
+
+  // Helper: read back a file
+  async function readBack(fileId) {
+    const r = await fetch(
+      `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
+      {headers:{'Authorization':'Bearer '+driveToken}}
+    );
+    if (!r.ok) throw new Error('Drive read-back failed');
+    return r.json();
+  }
+
+  // Helper: delete a file
+  async function deleteFile(fileId) {
+    await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}`,{
+      method:'DELETE',headers:{'Authorization':'Bearer '+driveToken}
+    });
+  }
+
+  // Helper: copy a file
+  async function copyFile(srcId, destName, destId) {
+    if (destId) await deleteFile(destId);
+    const r = await fetch(`https://www.googleapis.com/drive/v3/files/${srcId}/copy`,{
+      method:'POST',
+      headers:{'Authorization':'Bearer '+driveToken,'Content-Type':'application/json'},
+      body: JSON.stringify({name: destName})
+    });
+    if (!r.ok) throw new Error('Drive copy failed');
+    return (await r.json()).id;
+  }
+
+  // STEP 1: Write to TEMP
+  setSyncUI('busy', '\u2601\uFE0F Saving to Drive\u2026');
+  const tempId = await upload(DRIVE_TEMP, driveFileIds[DRIVE_TEMP], jsonStr);
+  driveFileIds[DRIVE_TEMP] = tempId;
+
+  // STEP 2: Verify TEMP (read back + count check)
+  const parsed = await readBack(tempId);
+  const expected = items.length;
+  const actual   = (parsed.items||[]).length;
+  if (actual !== expected) {
+    // Verification failed — original backup untouched
+    await deleteFile(tempId).catch(()=>{});
+    delete driveFileIds[DRIVE_TEMP];
+    throw new Error(`Verification failed: expected ${expected} items, got ${actual}`);
+  }
+
+  // STEP 3: Promote current → prev (keep previous backup)
+  if (driveFileIds[DRIVE_CUR]) {
+    driveFileIds[DRIVE_PREV] = await copyFile(
+      driveFileIds[DRIVE_CUR], DRIVE_PREV, driveFileIds[DRIVE_PREV]
+    );
+  }
+
+  // STEP 4: Promote TEMP → current
+  driveFileIds[DRIVE_CUR] = await copyFile(
+    tempId, DRIVE_CUR, driveFileIds[DRIVE_CUR]
+  );
+
+  // STEP 5: Delete TEMP
+  await deleteFile(tempId).catch(()=>{});
+  delete driveFileIds[DRIVE_TEMP];
+
+  // Mark clean
+  setDirty(false);
+  const ts = new Date().toLocaleTimeString();
+  localStorage.setItem(LS_DSYNC, ts);
+  setSyncUI('ok', '\u2601\uFE0F Synced \u2713', ts);
+  document.getElementById('drive-btn')?.classList.add('on');
 }
+
+// Main sync function — called after every change
+async function driveSync(force=false) {
+  if (!driveOn || !driveToken) return;       // not connected
+  if (!isDirty() && !force) return;          // nothing to sync
+
+  try {
+    const data    = await buildExportData(); // metadata + photos as base64
+    const jsonStr = JSON.stringify({
+      version:  6,
+      exported: new Date().toISOString(),
+      count:    data.items.length,
+      items:    data.items
+    });
+    await safeDriveWrite(jsonStr);
+  } catch(e) {
+    console.warn('Drive sync failed:', e);
+    setSyncUI('err', '\u2601\uFE0F Sync failed \u2014 will retry');
+    setDirty(true);   // keep dirty so next change retries
+    // Don't show error toast on background sync — only on manual
+  }
+}
+
+async function forceDriveSync() {
+  if (!driveOn) { toast('Connect Drive first','err'); return; }
+  try {
+    await driveSync(true);
+    toast('\u2713 Synced to Drive','ok');
+  } catch(e) { toast('Sync failed: '+e.message,'err',5000); }
+}
+
+async function driveRestore() {
+  if (!driveOn || !driveToken) { toast('Connect Drive first','err'); return; }
+  setSyncUI('busy','Fetching from Drive\u2026');
+  gapi.client.setToken({access_token: driveToken});
+  try {
+    await findDriveFiles();
+    const fileId = driveFileIds[DRIVE_CUR] || driveFileIds[DRIVE_PREV];
+    if (!fileId) { toast('No backup found on Drive','err'); setSyncUI('ok','Connected \u2713'); return; }
+
+    const resp = await fetch(
+      `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`,
+      {headers:{'Authorization':'Bearer '+driveToken}}
+    );
+    if (!resp.ok) throw new Error('Download failed');
+    const raw  = await resp.json();
+    const data = Array.isArray(raw) ? raw : (raw.items || []);
+    if (!data.length) throw new Error('Empty backup');
+    if (!confirm('Restore '+data.length+' items from Drive?\nCurrent data will be replaced.')) {
+      setSyncUI('ok','Connected \u2713'); return;
+    }
+    await importItems(data);
+    setSyncUI('ok','Restored \u2713');
+    toast('\u2713 Restored '+data.length+' items from Drive','ok');
+  } catch(e) {
+    setSyncUI('err','Restore failed');
+    toast('Restore failed: '+e.message,'err',5000);
+  }
+}
+
 </script>
 </body>
 </html>
