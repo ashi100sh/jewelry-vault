@@ -1498,12 +1498,12 @@ function renderGallery() {
   const photoCount = pics.filter(i=>i.hasPhoto).length;
   document.getElementById('gal-sub').textContent =
     pics.length + ' item' + (pics.length!==1?'s':'') +
-    (photoCount===pics.length ? '<img data-id="'+it.id+'" src="" style="width:100%;height:100%;object-fit:cover;display:block" alt="">' : ' \u00b7 '+photoCount+' with photo');
+    (photoCount < pics.length ? ' · ' + photoCount + ' with photo' : '');
 
   const gMs = ['All',...[...new Set(all.map(i=>i.metal||'Gold'))]];
   document.getElementById('gal-chips').innerHTML = gMs.map(m =>
     `<button class="chip${m===galFilter?' active':''}" onclick="galF('${m}')">${
-      m==='All'?'All':m==='Gold'?'\u{1F947} Gold':m==='Silver'?'\u{1F948} Silver':'\u{1F4A0} Other'
+      m==='All'?'All':m==='Gold'?'🥇 Gold':m==='Silver'?'🥈 Silver':'💠 Other'
     }</button>`
   ).join('');
 
@@ -1513,30 +1513,33 @@ function renderGallery() {
     return;
   }
 
-  // Build photo-only list for lightbox navigation
   galPhotoItems = pics.filter(i => i.hasPhoto);
 
   document.getElementById('gal-grid').innerHTML = pics.map(it => {
     const photoIdx = galPhotoItems.findIndex(x => Number(x.id) === Number(it.id));
-    const clickAct = it.hasPhoto
-      ? 'openLB('+photoIdx+')'
-      : "closeOv('ov-gallery');setTimeout(()=>openItem('"+it.id+"'),200)";
-    return '<div class="gal-thumb'+(it.hasPhoto?'':' gal-nophoto')+'" onclick="'+clickAct+'" id="galitem-'+it.id+'">'+
-      '<div class="gal-ph" id="galph-'+it.id+'">'+(it.hasPhoto
-        ? ''
-        : '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px"><span style="font-size:32px">'+(EMO[it.type]||'&#128141;')+'</span><span style="font-size:10px;color:var(--text3)">No photo</span></div>'
-      )+'</div>'+
-      '<div class="gal-ov">'+
-        '<div class="gal-name">'+esc(it.name)+'</div>'+
-        '<div style="display:flex;gap:3px;flex-wrap:wrap">'+
-          '<span class="gal-pill" style="background:var(--acc2);color:var(--acc)">'+esc(it.metal||'Gold')+(it.karat?' · '+esc(it.karat):'')+'</span>'+
-          (it.hasPhoto ? '<span class="gal-pill" style="background:rgba(255,255,255,.1);color:#ccc">&#128247;</span>' : '')+
-          ((it.hasBill||it.bill) ? '<span class="gal-pill" style="background:rgba(255,255,255,.1);color:#ccc">&#128206;</span>' : '')+
-        '</div>'+
-      '</div>'+
-    '</div>';
+    const onclick  = it.hasPhoto
+      ? 'openLB(' + photoIdx + ')'
+      : "closeOv('ov-gallery');setTimeout(()=>openItem('" + it.id + "'),200)";
+    return '<div class="gal-thumb" onclick="' + onclick + '" id="galitem-' + it.id + '">'
+      + '<div class="gal-ph" id="galph-' + it.id + '">'
+      + (it.hasPhoto
+          ? '<img src="" data-id="' + it.id + '" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none" alt="">'
+          : '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;pointer-events:none">'
+            + '<span style="font-size:32px">' + (EMO[it.type]||'💍') + '</span>'
+            + '<span style="font-size:10px;color:var(--text3)">tap to edit</span>'
+            + '</div>'
+        )
+      + '</div>'
+      + '<div class="gal-ov">'
+        + '<div class="gal-name">' + esc(it.name) + '</div>'
+        + '<div style="display:flex;gap:3px;flex-wrap:wrap">'
+          + '<span class="gal-pill" style="background:var(--acc2);color:var(--acc)">' + esc(it.metal||'Gold') + (it.karat?' · '+esc(it.karat):'') + '</span>'
+          + (it.hasPhoto ? '<span class="gal-pill" style="background:rgba(255,255,255,.1);color:#ccc">&#128247;</span>' : '')
+          + ((it.hasBill||it.bill) ? '<span class="gal-pill" style="background:rgba(255,255,255,.1);color:#ccc">&#128206;</span>' : '')
+        + '</div>'
+      + '</div>'
+    + '</div>';
   }).join('');
-
 
   loadGalleryPhotos(pics, galFilter);
 }
@@ -1545,9 +1548,7 @@ async function loadGalleryPhotos(pics, filterAtLoad) {
   for (const it of pics) {
     if (!it.hasPhoto) continue;
     if (galFilter !== filterAtLoad) break;
-    const el = document.getElementById('galph-'+it.id);
-    if (!el) continue;
-    const img = el.querySelector('img[data-id]');
+    const img = document.querySelector('#galph-' + it.id + ' img[data-id]');
     if (!img) continue;
     try {
       let url = photoURLCache[it.id];
@@ -1562,7 +1563,6 @@ async function loadGalleryPhotos(pics, filterAtLoad) {
 
 function galF(v) { galFilter = v; renderGallery(); }
 
-// openLB: idx is position in galPhotoItems (photo-only list)
 async function openLB(idx) {
   lbItems = galPhotoItems;
   if (!lbItems.length) return;
