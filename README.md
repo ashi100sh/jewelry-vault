@@ -1,194 +1,189 @@
-# ✦ Jewelry Vault
+# 💎 Jewelry Vault
 
-> A private, PIN-locked jewelry tracker for Gold & Silver collections — installable as a mobile app (PWA)
+A private, PIN-secured web app for tracking your personal jewelry collection.  
+**Live:** https://ashi100sh.github.io/jewelry-vault
 
-**Live App → [https://ashi100sh.github.io/jewelry-vault](https://ashi100sh.github.io/jewelry-vault)**
-
-![PIN Screen](https://img.shields.io/badge/PIN-Secured-gold?style=flat-square)
-![PWA](https://img.shields.io/badge/PWA-Installable-blue?style=flat-square)
-![Offline](https://img.shields.io/badge/Works-Offline-green?style=flat-square)
-![No Server](https://img.shields.io/badge/No%20Server-100%25%20Local-orange?style=flat-square)
-![Encrypted](https://img.shields.io/badge/AES--256--GCM-Encrypted%20Backup-red?style=flat-square)
+Install it on your phone like a native app — works fully offline.
 
 ---
 
-## 📱 What It Does
+## Features
 
-Track your entire jewelry collection — gold, silver, and other metals — with photos, weights, purchase prices, bill references, and storage locations. Everything stays **on your device**. No account, no server, no cloud required.
+### Security
+- **PIN lock** — 4-digit PIN, default `1234`, changeable in Settings
+- All data stays on **your device only** — nothing sent to any server
+- Google Drive backup is **opt-in** and connects only to your own account
+
+### Jewelry Tracking
+- **Metal types** — Gold (22K / 24K / 18K / 14K), Silver (Sterling 925 / 999 / 800), Other
+- **Jewelry types** — Necklace, Bangles, Ring, Earrings, Chain, Anklet, Bracelet, Pendant, Brooch
+- **Fields** — Name, Metal, Karat/Purity, Type, Weight (g), Purchase Date, Price (₹), Location, Bill Reference, Notes
+- **3-axis filter** — filter by Metal × Type × Location independently and in combination
+- **Stats bar** — total pieces, total weight, total value, number of locations
+
+### Photos
+- Add a photo to each jewelry item
+- Automatically converted to **WebP Q92** for best quality-to-size ratio
+- Photos larger than **4000px** are scaled down proportionally (aspect ratio preserved)
+- Photos under 4000px are stored at original resolution — never upscaled
+- Stored in **IndexedDB** — no size limit (not localStorage)
+- **Gallery view** with lightbox — swipe left/right or use keyboard arrow keys
+- Download any individual photo
+
+### Google Drive Sync
+- One-tap connect with your Google account
+- Syncs automatically on **every add / edit / delete** — no manual trigger needed
+- **Atomic write** — uses a temp file + verify + promote pattern, so backup is never corrupted
+- Keeps **two versions** on Drive: current backup + previous backup
+- Only uses `drive.file` scope — cannot see any other files in your Drive
+
+### Backup & Restore
+- **Export Both** — downloads plain JSON + encrypted `.ejv` file together in one tap
+- **JSON export** — plain readable backup with all photos embedded
+- **Encrypted export** — AES-256-GCM encryption, `.ejv` format
+- **Photos ZIP** — download all photos as a ZIP file
+- **Universal import** — auto-detects `.json` or `.ejv`, just select the file
+
+### Themes
+- **Dark Gold** — default dark theme with gold accents
+- **Pearl White** — light elegant theme
+- **Rose Gold** — dark theme with rose gold accents
+
+### PWA
+- Installable on Android and iPhone from the browser
+- Works fully offline after first load
+- Home screen icon, splash screen, no browser UI
 
 ---
 
-## ✨ Features
+## How to Use
 
-| Feature | Details |
-|---|---|
-| 🔐 PIN Lock | 4-digit PIN protects all data on open |
-| 🥇 Gold / 🥈 Silver / 💠 Other | Separate metal tracking with karat/purity options |
-| 📍 Location Tracking | Bank Locker, Home Safe, etc. — filter by location |
-| 🖼️ Photo Gallery | Full-screen gallery with swipe lightbox |
-| 📄 Bills View | Scrollable list of all bill references |
-| 🔍 3-Axis Filter | Filter by Metal + Jewelry Type + Location |
-| 💾 Plain Backup | JSON export with all photos embedded (base64) |
-| 🔒 Encrypted Backup | AES-256-GCM encrypted `.ejv` file — password protected |
-| 📦 Export Both | Downloads plain JSON + encrypted file simultaneously |
-| 📥 Smart Import | Auto-detects plain or encrypted file on restore |
-| ☁️ Google Drive | Auto-backup after every save |
-| 📲 Install as App | Works on Android (Chrome) and iPhone (Safari) |
-| 🌙 3 Themes | Dark Gold · Pearl White · Rose Gold |
-| ✈️ Offline | Full offline support via Service Worker |
+### First time
+1. Open https://ashi100sh.github.io/jewelry-vault
+2. Enter PIN `1234`
+3. Tap **+ Add Jewelry** to add your first item
+4. Optionally tap the **☁** icon → Settings → connect Google Drive for cloud backup
 
----
+### Add a jewelry item
+1. Tap **+ Add Jewelry**
+2. Select Metal (Gold / Silver / Other) — karat options update automatically
+3. Fill in the details — name is the only required field
+4. Add a photo by tapping the photo area
+5. Tap **Save Item**
 
-## 📲 Install on Phone
+### Change PIN
+Settings (⚙) → Security → enter new 4-digit PIN → Save
 
-**Android**
-1. Open Chrome → go to the app URL
-2. Tap **"Add to Home Screen"** banner → Install
-3. App icon appears on your home screen
+### Connect Google Drive
+Settings (⚙) → Google Drive → paste your OAuth Client ID → Connect Google Drive → sign in with Google
 
-**iPhone**
-1. Open Safari → go to the app URL
-2. Tap **Share icon** (□↑) → **"Add to Home Screen"** → Add
+### Backup your data
+Settings (⚙) → Backup & Restore → enter a backup password → tap **Both Files**  
+Save both the `.json` and `.ejv` files somewhere safe.
+
+### Restore from backup
+Settings (⚙) → Backup & Restore → enter password (for `.ejv`) → Import Any File → select the file
 
 ---
 
-## 🎨 Themes
+## Storage Details
 
-Switch between 3 themes using the dots on the PIN screen or inside the app:
+```
+localStorage  → item metadata (name, weight, price, etc.) — instant reads
+IndexedDB     → photos as raw Blobs — no size limit
+Google Drive  → full backup including photos — atomic write, corruption-proof
+```
 
-- 🖤 **Dark Gold** — deep black with warm gold accents (default)
-- 🤍 **Pearl White** — warm ivory / cream, elegant for daytime
-- 🌹 **Rose Gold** — deep burgundy with rose-gold accents
+Every change (add / edit / delete) writes to localStorage and IndexedDB instantly,
+then syncs to Google Drive in the background if connected.
+
+If the app crashes and localStorage is lost, it automatically recovers from an
+IndexedDB checkpoint on next open.
 
 ---
 
-## 💾 Backup & Restore
+## Encryption Details
 
-Open **Settings → Backup & Restore** to manage your backups.
-
-### Export Both (recommended) 📦
-Tap **Export Both** to download two files at once:
-- `jewelry_vault_YYYY-MM-DD.json` — plain readable backup
-- `jewelry_vault_YYYY-MM-DD.ejv` — AES-256-GCM encrypted backup
-
-Enter a password in the **Backup Password** field before exporting. Keep it safe — it cannot be recovered.
-
-### Plain JSON Backup 💾
-- No password needed
-- Human-readable, can be opened in any text editor
-- Includes all photos embedded as base64
-
-### Encrypted Backup 🔒
-- Enter password → tap **Encrypted Only**
-- Produces a `.ejv` file — binary, unreadable without the password
-- Safe to store on shared drives, email to yourself, etc.
-
-### Import / Restore 📥
-- Tap **Import Any File** — works with both `.json` and `.ejv`
-- Auto-detects the file type
-- For encrypted files: enter your password first, then import
-- Wrong password → instant error, nothing overwritten
-
-### Encryption Details
 | Property | Value |
-|---|---|
+|----------|-------|
 | Algorithm | AES-256-GCM |
-| Key derivation | PBKDF2-SHA256 |
-| Iterations | 310,000 (OWASP 2024 recommended) |
-| Salt | 16 bytes random per export |
-| IV | 12 bytes random per export |
-| File magic | `EJV1` header |
-| Library | None — browser Web Crypto API only |
+| Key derivation | PBKDF2 |
+| Hash | SHA-256 |
+| Iterations | 310,000 |
+| File format | `.ejv` |
+| Magic header | `EJV1` |
+| Password stored? | Never |
+
+**Important:** The backup password is never stored anywhere. If you forget it, the `.ejv` file cannot be decrypted. Always keep the plain `.json` backup as well.
 
 ---
 
-## ☁️ Google Drive Backup
+## Google Drive Setup
 
-1. Create a project in [Google Cloud Console](https://console.cloud.google.com)
-2. Enable Google Drive API
-3. Create OAuth Client ID (Web application)
-4. Add authorised JS origin: `https://ashi100sh.github.io`
-5. Paste Client ID in app Settings → Connect Google Drive
-6. Auto-backup fires 3 seconds after every save
-7. Backup file: `jewelry_vault_backup.json` (plain JSON, includes photos)
+> If your Client ID is already hardcoded into the app, skip steps 1–5.
 
-> Drive backup uses `drive.file` scope only — app cannot access any other Drive files.
+1. Go to [console.cloud.google.com](https://console.cloud.google.com)
+2. Create a new project → name it **Jewelry Vault**
+3. **APIs & Services → Library** → search **Google Drive API** → Enable
+4. **Google Auth Platform → Branding** → fill app name and domain
+5. **Clients → Create Client**
+   - Type: **Web application**
+   - Authorised JavaScript origins: `https://ashi100sh.github.io`
+   - Copy the **Client ID**
+6. In the app: Settings → Google Drive → paste Client ID → Connect
 
----
-
-## 🗂️ Fields Tracked
-
-| Field | Notes |
-|---|---|
-| Photo | WebP Q92 · up to 4000px · full quality · included in backup |
-| Metal | Gold / Silver / Other |
-| Jewelry Type | Necklace · Ring · Bangles · Earrings · Chain · Anklet · Bracelet · Pendant · Brooch |
-| Karat / Purity | 22K/24K/18K/14K (Gold) · Sterling 925/999/800 (Silver) |
-| Weight | Grams |
-| Purchase Price | ₹ with Indian number formatting |
-| Purchase Date | |
-| Location | Bank Locker, Home Safe, etc. — used in filter + stats |
-| Bill Reference | Shop name, bill number, receipt ID, etc. |
-| Notes | Occasion, gift from, any free text |
-
----
-
-## 🔒 Privacy & Security
-
-| Concern | Answer |
-|---|---|
-| Where is data stored? | Browser `localStorage` only — never sent anywhere |
-| Are photos uploaded? | No — stored locally, embedded in backup file |
-| What does Google Drive see? | Only the backup file the app creates (`drive.file` scope) |
-| Is the PIN stored? | Yes, in `localStorage` — but only on your device |
-| Is the encryption password stored? | Never — not in localStorage, not in the file |
-| Can I recover an encrypted backup without the password? | No — mathematically impossible |
-
----
-
-## 🔑 PIN Notes
-
-- Default PIN: `1234` — change immediately in Settings
-- PIN is stored in `localStorage` on your device only
-- PIN is **not included** in backup files — reset to `1234` on new device restore, then change again in Settings
-
----
-
-## 📁 Files
+### Drive files created
 
 ```
-jewelry-vault/
-├── index.html            ← Complete PWA app (single file, ~70KB)
-├── manifest.json         ← PWA config (name, icons, theme color)
-├── sw.js                 ← Service worker (offline caching)
-├── icon-192.png          ← Android home screen icon
-├── icon-512.png          ← Splash screen icon
-├── apple-touch-icon.png  ← iPhone home screen icon
-└── README.md             ← This file
+jewelry_vault_backup.json        ← current verified backup
+jewelry_vault_backup_prev.json   ← previous backup (one version behind)
+```
+
+### Drive scope
+
+Only `drive.file` — the app can only read and write files it created itself.
+It cannot access any other files in your Google Drive.
+
+---
+
+## Deployment
+
+| Property | Value |
+|----------|-------|
+| Repo | github.com/ashi100sh/jewelry-vault |
+| Hosting | GitHub Pages |
+| Live URL | https://ashi100sh.github.io/jewelry-vault |
+| Update | Replace `index.html` on GitHub |
+| Clear cache | Append `?v=2` to the URL after updating |
+
+### Files in repo
+
+```
+index.html            ← the entire app (replace this to update)
+manifest.json         ← PWA configuration
+sw.js                 ← service worker for offline support
+icon-192.png          ← app icon
+icon-512.png          ← app icon (large)
+apple-touch-icon.png  ← iOS home screen icon
 ```
 
 ---
 
-## 🚀 Self-Hosting
+## Default PIN
 
-1. Fork this repo or create a new one named `jewelry-vault`
-2. Upload all 7 files to the repo root
-3. Go to **Settings → Pages → Branch: main / (root) → Save**
-4. App is live at `https://YOUR_USERNAME.github.io/jewelry-vault`
-5. For Google Drive backup, update the authorised JS origin in Google Cloud Console
+`1234` — change it immediately in Settings after first login.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Vanilla HTML + CSS + JavaScript** — zero dependencies, zero build step
-- **Web Crypto API** — AES-256-GCM encryption + PBKDF2 key derivation (built into browser)
-- **Canvas API** — WebP Q92 image compression (no libraries)
-- **Service Worker** — offline-first caching
-- **localStorage** — all data storage
-- **Google Identity Services** — OAuth for Drive backup
-- **JSZip** — loaded on-demand only for photo ZIP export
-
----
-
-*Built with ❤️ for keeping track of what matters most*
+- Vanilla JavaScript — no frameworks, no dependencies
+- IndexedDB for photo storage
+- localStorage for metadata
+- Web Crypto API for AES-256-GCM encryption
+- Google Identity Services for OAuth
+- Google Drive API v3 for cloud backup
+- Canvas API for WebP photo conversion
+- Service Worker for offline / PWA
+- CSS custom properties for theming
+- JSZip (loaded from CDN on demand) for photo ZIP export
