@@ -268,19 +268,19 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .gal-pill.gold{background:#C8960C;color:#000}.gal-pill.silver{background:#A8B8C8;color:#000}.gal-pill.other{background:rgba(255,255,255,.25);color:#fff}
 
 /* ═══ LIGHTBOX ═══ */
-#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:900;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:900;display:none;flex-direction:column;align-items:stretch}
 #lightbox.open{display:flex}
-#lb-img{max-width:94vw;max-height:76vh;object-fit:contain;border-radius:10px}
-#lb-info{margin-top:14px;text-align:center}
+#lb-img{max-width:100%;max-height:100%;object-fit:contain;display:block;pointer-events:none}
+#lb-info{padding:12px 20px 4px;text-align:center;flex-shrink:0}
 #lb-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:#F0D9A0}
 #lb-meta{font-size:12px;color:#888;margin-top:5px}
 #lb-loc{font-size:12px;color:#A8B8C8;margin-top:4px}
-#lb-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:11px;color:#fff;font-size:18px;padding:9px 16px;cursor:pointer;line-height:1;touch-action:manipulation}
-#lb-dl{position:absolute;bottom:16px;right:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-size:13px;padding:9px 16px;cursor:pointer;touch-action:manipulation}
-#lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:50%;color:#fff;font-size:24px;width:50px;height:50px;display:flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation;transition:background .2s}
-#lb-prev{left:12px}#lb-next{right:12px}
+#lb-close{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:11px;color:#fff;font-size:18px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation;flex-shrink:0}
+#lb-dl{margin:0 auto 16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;color:#fff;font-size:13px;padding:10px 24px;cursor:pointer;display:block;touch-action:manipulation;font-family:Jost,sans-serif;flex-shrink:0}
+#lb-imgwrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}#lb-prev,#lb-next{position:absolute;top:0;bottom:0;width:25%;display:flex;align-items:center;justify-content:center;font-size:40px;color:rgba(255,255,255,.75);cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;z-index:10;touch-action:manipulation}
+#lb-prev{left:0}#lb-next{right:0}
 #lb-prev:hover,#lb-next:hover{background:rgba(255,255,255,.2)}
-#lb-counter{position:absolute;top:16px;left:50%;transform:translateX(-50%);font-size:12px;color:rgba(255,255,255,.45);letter-spacing:1px}
+#lb-topbar{display:flex;align-items:center;justify-content:space-between;padding:env(safe-area-inset-top,14px) 16px 14px;flex-shrink:0}#lb-counter{font-size:13px;color:rgba(255,255,255,.5);letter-spacing:1px}
 
 /* ═══ BILLS ═══ */
 .bill-list{display:flex;flex-direction:column;gap:11px;max-height:58vh;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-right:2px}
@@ -574,11 +574,15 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 
 <!-- LIGHTBOX -->
 <div id="lightbox">
-  <button id="lb-close" onclick="closeLB()">&#10005;</button>
-  <span id="lb-counter"></span>
-  <button id="lb-prev" onclick="lbNav(-1)">&#8249;</button>
-  <img id="lb-img" src="" alt=""/>
-  <button id="lb-next" onclick="lbNav(1)">&#8250;</button>
+  <div id="lb-topbar">
+    <span id="lb-counter"></span>
+    <button id="lb-close" onclick="closeLB()">&#10005;</button>
+  </div>
+  <div id="lb-imgwrap">
+    <div id="lb-prev" onclick="lbNav(-1)">&#8249;</div>
+    <img id="lb-img" src="" alt=""/>
+    <div id="lb-next" onclick="lbNav(1)">&#8250;</div>
+  </div>
   <div id="lb-info">
     <div id="lb-name"></div>
     <div id="lb-meta"></div>
@@ -2068,8 +2072,9 @@ function changePin() {
 }
 
 // ── OVERLAYS ────────────────────────────────────────────────
-function openOv(id)  { document.getElementById(id).classList.add('open');    document.body.style.overflow='hidden'; }
-function closeOv(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow='';       }
+let _ovCount = 0;
+function openOv(id)  { document.getElementById(id).classList.add('open');    _ovCount++; document.body.style.overflow='hidden'; }
+function closeOv(id) { document.getElementById(id).classList.remove('open'); _ovCount = Math.max(0,_ovCount-1); if(_ovCount===0) document.body.style.overflow=''; }
 
 // ── GOOGLE DRIVE ─────────────────────────────────────────────
 function loadScript(src) {
