@@ -261,7 +261,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .gal-thumb{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;cursor:pointer;background:var(--card2);border:1px solid var(--border)}.gal-ph{width:100%;height:100%}.gal-nophoto{opacity:.72;cursor:default}
 .gal-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
 .gal-thumb:hover img,.gal-thumb:active img{transform:scale(1.08)}
-.gal-ov{position:absolute;inset:0;background:rgba(0,0,0,.58);opacity:0;transition:opacity .2s;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:9px;gap:3px}
+.gal-ov{position:absolute;inset:0;background:rgba(0,0,0,.58);opacity:0;transition:opacity .2s;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:9px;gap:3px;pointer-events:none}
 .gal-thumb:hover .gal-ov,.gal-thumb:active .gal-ov{opacity:1}
 .gal-name{font-size:13px;color:#fff;text-align:center;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
 .gal-pill{font-size:10px;padding:2px 7px;border-radius:5px;font-weight:600;align-self:flex-start}
@@ -308,7 +308,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .pin-row{display:flex;gap:9px}.pin-row input{flex:1}.pin-row .s-btn{flex-shrink:0}
 
 /* ═══ TOAST ═══ */
-#toast{position:fixed;bottom:max(26px,env(safe-area-inset-bottom,26px));left:50%;transform:translateX(-50%) translateY(90px);background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:12px 22px;font-size:14px;color:var(--text);z-index:9999;transition:transform .32s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap;max-width:88vw;box-shadow:var(--shadow);overflow:hidden;text-overflow:ellipsis}
+#toast{position:fixed;bottom:max(26px,env(safe-area-inset-bottom,26px));left:50%;transform:translateX(-50%) translateY(90px);background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:12px 22px;font-size:14px;color:var(--text);z-index:9999;transition:transform .32s cubic-bezier(.34,1.56,.64,1);pointer-events:none;max-width:90vw;box-shadow:var(--shadow)}#toast.show{pointer-events:auto}
 #toast.show{transform:translateX(-50%) translateY(0)}
 #toast.ok{border-color:rgba(90,154,74,.5);color:#7ACA6A}
 #toast.err{border-color:rgba(200,80,80,.4);color:#E07070}
@@ -1000,12 +1000,17 @@ function setupPWA() {
 }
 
 function showUpdateBanner() {
-  // Show update toast with reload button
-  const el = document.getElementById('toast');
-  el.innerHTML = '&#9889; New version available &nbsp;<button onclick="location.reload()" style="background:var(--acc);color:var(--bg);border:none;border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;font-family:Jost,sans-serif;font-weight:600;margin-left:4px">Update Now</button>';
-  el.className = 'show warn';
-  clearTimeout(el._t);
-  el._t = setTimeout(() => { el.className=''; el.innerHTML=''; }, 30000);
+  // Use dedicated update bar so it stays visible and is always clickable
+  let bar = document.getElementById('update-bar');
+  if (!bar) {
+    bar = document.createElement('div');
+    bar.id = 'update-bar';
+    bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9998;background:var(--card);border-top:1px solid var(--acc);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,.4)';
+    bar.innerHTML = '<span style="font-size:14px;color:var(--text)">&#9889; New version available</span>'
+      + '<button onclick="location.reload(true)" style="background:var(--acc);color:var(--bg);border:none;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:Jost,sans-serif;touch-action:manipulation;min-height:44px;min-width:110px">Update Now</button>';
+    document.body.appendChild(bar);
+  }
+  bar.style.display = 'flex';
 }
 function pwaInstall() {
   if (!pwaPrompt) return;
@@ -1521,12 +1526,11 @@ function renderGallery() {
       ? 'openLB(' + photoIdx + ')'
       : "closeOv('ov-gallery');setTimeout(()=>openItem('" + it.id + "'),200)";
     return '<div class="gal-thumb" onclick="' + onclick + '" id="galitem-' + it.id + '">'
-      + '<div class="gal-ph" id="galph-' + it.id + '">'
+      + '<div class="gal-ph" id="galph-' + it.id + '" style="pointer-events:none">'
       + (it.hasPhoto
           ? '<img src="" data-id="' + it.id + '" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none" alt="">'
           : '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;pointer-events:none">'
             + '<span style="font-size:32px">' + (EMO[it.type]||'💍') + '</span>'
-            + '<span style="font-size:10px;color:var(--text3)">tap to edit</span>'
             + '</div>'
         )
       + '</div>'
