@@ -1098,7 +1098,7 @@ function renderStats() {
 
   // Per-metal weight breakdown
   const metalOrder = ['Gold','Silver','Other'];
-  const metalEmoji = {Gold:'\U0001f947',Silver:'\U0001f948',Other:'\U0001f4a0'};
+  const metalEmoji = {Gold:'🥇',Silver:'🥈',Other:'💠'};
   const metalMap = {};
   items.forEach(i => {
     const m = i.metal || 'Gold';
@@ -1119,7 +1119,7 @@ function renderStats() {
         + '<div class="mw-lbl">' + m + '</div>'
         + '<div class="mw-val">' + wtStr + '</div>'
         + '<div class="mw-sub">' + sub + '</div>'
-        + '<span class="mw-icon">' + (metalEmoji[m]||'\U0001f48d') + '</span>'
+        + '<span class="mw-icon">' + (metalEmoji[m]||'💍') + '</span>'
         + '</div>';
     }).join('');
   }
