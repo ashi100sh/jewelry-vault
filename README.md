@@ -313,7 +313,7 @@ Live:   https://ashi100sh.github.io/jewelry-vault
 
 Hard-reload after update:
 ```
-https://ashi100sh.github.io/jewelry-vault?v=1
+https://ashi100sh.github.io/jewelry-vault?v=2
 ```
 
 ---
