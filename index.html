@@ -721,7 +721,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
    ============================================================= */
 
 // ── CONSTANTS ──────────────────────────────────────────────
-const APP_VERSION   = '6.2';
+const APP_VERSION   = '6.3';
 const HARDCODED_CID = '837338190227-tllb7sifh816u0p7mahs9e36it3lvqtf.apps.googleusercontent.com';
 const LS_META   = 'gjv_meta_v6';   // item metadata array
 const LS_CFG    = 'gjv_cfg_v6';    // config + PIN
@@ -729,9 +729,11 @@ const LS_DIRTY  = 'gjv_dirty';     // 'true' if Drive needs sync
 const LS_DSYNC  = 'gjv_dsync';     // last Drive sync timestamp
 const DB_NAME   = 'jewelry_vault_db';
 const DB_VER    = 2;
-const DRIVE_CUR  = 'jewelry_vault_backup.json';
-const DRIVE_PREV = 'jewelry_vault_backup_prev.json';
-const DRIVE_TEMP = 'jewelry_vault_TEMP.json';
+const DRIVE_CUR         = 'jewelry_vault_backup.json';
+const DRIVE_PREV        = 'jewelry_vault_backup_prev.json';
+const DRIVE_TEMP        = 'jewelry_vault_TEMP.json';
+const DRIVE_FOLDER_NAME = 'Jewelry Vault';
+const LS_FOLDER         = 'gjv_folderid';
 
 const JTYPES = ['Necklace','Bangles','Ring','Earrings','Chain','Anklet','Bracelet','Pendant','Brooch','Other'];
 const EMO    = {Necklace:'\u{1F4FF}',Bangles:'\u{1F49B}',Ring:'\u{1F48D}',Earrings:'\u2728',
@@ -755,7 +757,7 @@ let curMeta  = null;      // { size } for display
 let curMetal = 'Gold';
 let fMetal = 'All', fType = 'All', fLoc = 'All', fPhoto = 'All', fBill = 'All';
 let lbItems  = [], lbIdx  = 0, galFilter = 'All', galPhotoItems = [];
-let driveOn  = false, driveToken = null, driveFileIds = {};
+let driveOn  = false, driveToken = null, driveFileIds = {}, driveFolderId = null;
 let gapiOk   = false, tokenClient = null;
 let pwaPrompt = null;
 
@@ -2146,12 +2148,13 @@ function onDriveToken(resp) {
   setSyncUI('ok','Connected \u2713');
   toast('\u2601\uFE0F Drive connected','ok');
   // Immediately sync everything
-  findDriveFiles().then(() => driveSync(true));
+  findOrCreateFolder().then(() => findDriveFiles()).then(() => driveSync(true));
 }
 
 async function toggleDrive() {
   if (driveOn) {
-    driveOn=false; driveToken=null; driveFileIds={}; cfg.driveAuto=false; saveCfg();
+    driveOn=false; driveToken=null; driveFileIds={}; driveFolderId=null;
+    localStorage.removeItem(LS_FOLDER); cfg.driveAuto=false; saveCfg();
     try { google.accounts.oauth2.revoke(driveToken, ()=>{}); } catch {}
     setSyncUI('','Disconnected'); updateDriveUI();
     toast('Drive disconnected'); return;
@@ -2180,12 +2183,40 @@ function updateDriveUI() {
 }
 
 // Find existing Drive file IDs
+async function findOrCreateFolder() {
+  if (!gapiOk || !driveToken) return;
+  // Return cached folder ID if we have it
+  const cached = localStorage.getItem(LS_FOLDER);
+  if (cached) { driveFolderId = cached; return; }
+  gapi.client.setToken({access_token: driveToken});
+  try {
+    // Search for existing folder
+    const r = await gapi.client.drive.files.list({
+      q: `name='${DRIVE_FOLDER_NAME}' and mimeType='application/vnd.google-apps.folder' and trashed=false`,
+      fields: 'files(id,name)', spaces: 'drive'
+    });
+    if (r.result.files && r.result.files.length > 0) {
+      driveFolderId = r.result.files[0].id;
+    } else {
+      // Create folder
+      const cr = await fetch('https://www.googleapis.com/drive/v3/files', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + driveToken, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: DRIVE_FOLDER_NAME, mimeType: 'application/vnd.google-apps.folder' })
+      });
+      const fd = await cr.json();
+      driveFolderId = fd.id;
+    }
+    localStorage.setItem(LS_FOLDER, driveFolderId);
+  } catch(e) { console.warn('findOrCreateFolder failed', e); }
+}
+
 async function findDriveFiles() {
   if (!gapiOk || !driveToken) return;
   gapi.client.setToken({access_token: driveToken});
   try {
     const r = await gapi.client.drive.files.list({
-      q: `(name='${DRIVE_CUR}' or name='${DRIVE_PREV}' or name='${DRIVE_TEMP}') and trashed=false`,
+      q: `(name='${DRIVE_CUR}' or name='${DRIVE_PREV}' or name='${DRIVE_TEMP}') and trashed=false` + (driveFolderId ? ` and '${driveFolderId}' in parents` : ''),
       fields: 'files(id,name)', spaces:'drive'
     });
     (r.result.files||[]).forEach(f => { driveFileIds[f.name] = f.id; });
@@ -2200,7 +2231,9 @@ async function safeDriveWrite(jsonStr) {
 
   // Helper: multipart upload
   async function upload(name, fileId, data) {
-    const meta = JSON.stringify({name, mimeType:'application/json'});
+    const metaObj = {name, mimeType:'application/json'};
+    if (!fileId && driveFolderId) metaObj.parents = [driveFolderId];
+    const meta = JSON.stringify(metaObj);
     const body = `--${boundary}\r\nContent-Type: application/json\r\n\r\n${meta}\r\n`+
                  `--${boundary}\r\nContent-Type: application/json\r\n\r\n${data}\r\n`+
                  `--${boundary}--`;
