@@ -55,29 +55,30 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 #pin-screen::before{content:'';position:absolute;width:min(360px,88vw);height:min(360px,88vw);border-radius:50%;border:1px solid var(--glow);top:-12%;right:-14%;pointer-events:none}
 #pin-screen::after{content:'';position:absolute;width:min(260px,66vw);height:min(260px,66vw);border-radius:50%;border:1px solid var(--glow);bottom:-8%;left:-8%;pointer-events:none}
 .pin-brand{text-align:center;position:relative;z-index:1}
-.pin-eyebrow{font-size:clamp(10px,2.5vw,12px);letter-spacing:5px;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
-.pin-gem{font-size:clamp(52px,13vw,68px);display:block;filter:drop-shadow(0 0 18px var(--glow))}
-.pin-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,7.5vw,40px);font-weight:300;color:var(--text);margin-top:8px;line-height:1.1}
+.pin-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--acc);margin-bottom:12px;font-weight:500}
+.pin-gem{font-size:clamp(56px,14vw,72px);display:block;filter:drop-shadow(0 0 20px var(--glow));margin-bottom:2px}
+.pin-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,8vw,44px);font-weight:300;color:var(--text);margin-top:6px;line-height:1.1}
 .pin-title em{color:var(--acc);font-style:italic}
-.pin-subt{font-size:clamp(11px,2.5vw,13px);color:var(--text3);letter-spacing:3px;text-transform:uppercase;margin-top:5px}
-.pin-dots{display:flex;gap:16px;justify-content:center;position:relative;z-index:1}
-.pin-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--border2);transition:all .25s}
-.pin-dot.filled{background:var(--acc);border-color:var(--acc);box-shadow:0 0 12px var(--glow);transform:scale(1.2)}
-#pin-err{font-size:13px;color:#E07070;letter-spacing:1.5px;text-align:center;min-height:22px;position:relative;z-index:1}
+.pin-subt{font-size:11px;color:var(--text3);letter-spacing:4px;text-transform:uppercase;margin-top:8px}
+.pin-dots{display:flex;gap:20px;justify-content:center;position:relative;z-index:1}
+.pin-dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--border2);transition:all .2s}
+.pin-dot.filled{background:var(--acc);border-color:var(--acc);box-shadow:0 0 10px var(--glow);transform:scale(1.3)}
+#pin-err{font-size:11px;color:#E07070;letter-spacing:2px;text-align:center;min-height:20px;position:relative;z-index:1;text-transform:uppercase}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}60%{transform:translateX(5px)}80%{transform:translateX(-3px)}}
 .shake{animation:shake .4s}
-.pin-grid{display:grid;grid-template-columns:repeat(3,clamp(72px,20vw,88px));gap:clamp(10px,2.5vw,14px);position:relative;z-index:1}
-.pin-btn{height:clamp(72px,20vw,88px);background:var(--pin-btn);border:1px solid var(--border);border-radius:18px;color:var(--text);font-size:clamp(22px,5.5vw,28px);font-family:'Cormorant Garamond',serif;cursor:pointer;transition:all .18s;touch-action:manipulation}
-.pin-btn:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
-.pin-btn:active{transform:scale(.94)}
-.theme-row{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
-.theme-lbl{font-size:clamp(11px,2.5vw,12px);color:var(--text3);letter-spacing:2px;text-transform:uppercase}
-.tdot{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .2s;touch-action:manipulation;flex-shrink:0}
-.tdot.active,.tdot:hover{border-color:var(--text);transform:scale(1.18)}
+.pin-grid{display:grid;grid-template-columns:repeat(3,clamp(74px,21vw,90px));gap:clamp(10px,2.5vw,13px);position:relative;z-index:1}
+.pin-btn{height:clamp(74px,21vw,90px);background:var(--pin-btn);border:1px solid var(--border);border-radius:22px;color:var(--text);font-size:clamp(22px,5.5vw,28px);font-family:'Jost',sans-serif;font-weight:300;cursor:pointer;transition:all .18s;touch-action:manipulation;display:flex;align-items:center;justify-content:center}
+.pin-btn:hover{border-color:var(--acc);color:var(--acc);background:var(--card2)}
+.pin-btn:active{transform:scale(.93);background:var(--card2)}
+.theme-row{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+.theme-lbl{font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;font-weight:500}
+.tdot{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .2s;touch-action:manipulation;flex-shrink:0}
+.tdot.active,.tdot:hover{border-color:var(--acc);transform:scale(1.2)}
 .td-dark{background:radial-gradient(circle at 35% 35%,#3A3420,#0C0B08)}
 .td-pearl{background:radial-gradient(circle at 35% 35%,#E8D8B0,#F5F0E8)}
 .td-rose{background:radial-gradient(circle at 35% 35%,#4A2838,#180D10)}
-.pin-note{font-size:clamp(11px,2.5vw,12px);color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;position:relative;z-index:1}
+.pin-note{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;position:relative;z-index:1}
+.pin-ver{font-size:10px;color:var(--muted);letter-spacing:1px;position:relative;z-index:1;margin-top:-6px}
 
 /* ═══ INSTALL BAR ═══ */
 #install-bar{display:none;padding:12px 16px;background:var(--card2);border-bottom:1px solid var(--border);align-items:center;justify-content:space-between;gap:10px;position:sticky;top:0;z-index:200}
@@ -96,12 +97,12 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .hero-sub{font-size:clamp(11px,2.5vw,12px);letter-spacing:2.5px;text-transform:uppercase;color:var(--text2);margin-top:6px;opacity:.85}
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .hero-themes{display:flex;gap:8px}
-.hero-btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.hero-btns .btn{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:var(--text)}.hero-btns .btn:hover,.hero-btns .btn:active{background:rgba(255,255,255,.12);border-color:var(--acc);color:var(--acc)}.hero-btns .btn.danger{border-color:rgba(255,255,255,.18)}.hero-btns .btn.danger:hover{border-color:#E07070;color:#E07070}[data-theme='pearl'] .hero-btns .btn{background:rgba(0,0,0,.07);border-color:rgba(0,0,0,.18);color:var(--text2)}[data-theme='pearl'] .hero-btns .btn:hover{background:rgba(0,0,0,.1);border-color:var(--acc);color:var(--acc)}
+.hero-btns{display:flex;gap:5px;flex-wrap:nowrap;justify-content:flex-end;align-items:center}.hero-btns .btn{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:var(--text);font-size:12px;padding:0 10px;height:40px;min-height:40px}.hero-btns .btn:hover,.hero-btns .btn:active{background:rgba(255,255,255,.12);border-color:var(--acc);color:var(--acc)}.hero-btns .btn.danger{border-color:rgba(255,255,255,.18)}.hero-btns .btn.danger:hover{border-color:#E07070;color:#E07070}[data-theme='pearl'] .hero-btns .btn{background:rgba(0,0,0,.07);border-color:rgba(0,0,0,.18);color:var(--text2)}[data-theme='pearl'] .hero-btns .btn:hover{background:rgba(0,0,0,.1);border-color:var(--acc);color:var(--acc)}
 .btn{background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text2);font-size:clamp(12px,2.8vw,13px);padding:clamp(8px,2.2vw,11px) clamp(11px,3vw,15px);cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;white-space:nowrap;transition:all .18s;-webkit-appearance:none;min-height:38px}
 .btn:hover,.btn:active{border-color:var(--acc);color:var(--acc)}
 .btn.primary{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:600}
 .btn.primary:hover{background:var(--acc2);border-color:var(--acc2)}
-.btn.danger:hover,.btn.danger:active{border-color:#E07070;color:#E07070}.btn-icon{width:44px;height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;min-height:44px}
+.btn.danger:hover,.btn.danger:active{border-color:#E07070;color:#E07070}.btn-icon{width:40px;height:40px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;min-height:40px}
 .btn.on{border-color:rgba(90,154,74,.5)!important;color:#6ABA5A!important}
 
 /* ═══ STATS ═══ */
@@ -117,7 +118,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:0;transition:opacity .3s}
 .sc:hover::after{opacity:1}
 .sc-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;font-weight:500}
-.sc-val{font-family:'Jost',sans-serif;font-size:clamp(24px,5.8vw,32px);font-weight:300;color:var(--acc);line-height:1;letter-spacing:-0.5px}#metal-wt-bar{display:flex;border-bottom:1px solid var(--border);min-height:0}#metal-wt-bar:empty{display:none}.mw-cell{flex:1;padding:clamp(10px,3vw,14px) clamp(12px,3.5vw,16px) clamp(10px,3vw,14px) clamp(13px,3.5vw,17px);background:var(--stat);border-right:1px solid var(--border);position:relative;overflow:hidden;border-left:3px solid transparent}.mw-cell:last-child{border-right:none}.mw-cell:nth-child(1){border-left-color:#C8960C}.mw-cell:nth-child(2){border-left-color:#A8B8C8}.mw-cell:nth-child(3){border-left-color:var(--acc2)}.mw-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-weight:500}.mw-val{font-family:'Jost',sans-serif;font-size:clamp(19px,5vw,23px);font-weight:300;color:var(--acc);line-height:1;margin-bottom:3px;letter-spacing:-0.5px}.mw-sub{font-size:clamp(11px,2.6vw,12px);color:var(--text2)}.mw-icon{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:22px;opacity:.15}#loc-metal-bar{border-bottom:1px solid var(--border)}#loc-metal-bar:empty{display:none}.lmb-row{display:flex;align-items:stretch;border-bottom:0.5px solid var(--border)}.lmb-row:last-child{border-bottom:none}.lmb-loc{padding:8px 12px;font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;min-width:90px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;border-right:1px solid var(--border);background:var(--stat)}.lmb-metals{display:flex;flex:1;flex-wrap:wrap}.lmb-chip{padding:6px 10px;font-size:12px;color:var(--text3);border-right:0.5px solid var(--border)}.lmb-chip span{font-size:13px;font-weight:600;color:var(--acc);margin-left:3px}
+.sc-val{font-family:'Jost',sans-serif;font-size:clamp(24px,5.8vw,32px);font-weight:300;color:var(--acc);line-height:1;letter-spacing:-0.5px}#metal-wt-bar{display:flex;border-bottom:1px solid var(--border);min-height:0}#metal-wt-bar:empty{display:none}.mw-cell{flex:1;padding:clamp(10px,3vw,14px) clamp(12px,3.5vw,16px) clamp(10px,3vw,14px) clamp(13px,3.5vw,17px);background:var(--stat);border-right:1px solid var(--border);position:relative;overflow:hidden;border-left:3px solid transparent}.mw-cell:last-child{border-right:none}.mw-cell:nth-child(1){border-left-color:#C8960C}.mw-cell:nth-child(2){border-left-color:#A8B8C8}.mw-cell:nth-child(3){border-left-color:var(--acc2)}.mw-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-weight:500}.mw-val{font-family:'Jost',sans-serif;font-size:clamp(19px,5vw,23px);font-weight:300;color:var(--acc);line-height:1;margin-bottom:3px;letter-spacing:-0.5px}.mw-sub{font-size:clamp(11px,2.6vw,12px);color:var(--text2)}.mw-icon{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:22px;opacity:.15}#loc-metal-bar{border-bottom:1px solid var(--border);padding:10px clamp(14px,4vw,22px) 6px}#loc-metal-bar:empty{display:none}.lmb-grid{display:flex;flex-wrap:wrap;gap:6px}.lmb-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 12px;min-width:130px;flex:1;max-width:180px}.lmb-loc{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lmb-metals{display:flex;gap:8px;flex-wrap:wrap}.lmb-chip{display:flex;flex-direction:column;align-items:flex-start}.lmb-chip-lbl{font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase}.lmb-chip span{font-size:14px;font-weight:500;color:var(--acc);font-family:'Jost',sans-serif;letter-spacing:-0.3px}
 
 /* ═══ SYNC STATUS BAR ═══ */
 #sync-bar{padding:7px clamp(16px,4vw,24px);background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;min-height:34px}
@@ -330,7 +331,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 <!-- PIN SCREEN -->
 <div id="pin-screen">
   <div class="pin-brand">
-    <div class="pin-eyebrow">&#10022; Private Vault &#10022;</div>
+    <div class="pin-eyebrow">&#10022; PRIVATE VAULT &#10022;</div>
     <span class="pin-gem">&#128141;</span>
     <div class="pin-title">Jewelry <em>Vault</em></div>
     <div class="pin-subt">Enter PIN to unlock</div>
@@ -364,6 +365,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     <div class="tdot td-pearl" id="tp-pearl" onclick="setTheme('pearl')" title="Pearl White"></div>
     <div class="tdot td-rose"  id="tp-rose"  onclick="setTheme('rose')"  title="Rose Gold"></div>
   </div>
+  <div class="pin-ver" id="pin-ver-lbl"></div>
   <div class="pin-note">Default PIN: 1234</div>
 </div>
 
@@ -399,6 +401,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     <div class="sync-dot" id="sync-dot"></div>
     <span id="sync-msg"></span>
     <span id="sync-time"></span>
+    <span id="ver-badge" style="font-size:10px;color:var(--text3);margin-left:4px;letter-spacing:.5px;flex-shrink:0"></span>
   </div>
 
   <!-- Stats -->
@@ -733,7 +736,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
    ============================================================= */
 
 // ── CONSTANTS ──────────────────────────────────────────────
-const APP_VERSION   = '6.8';
+const APP_VERSION   = '7.0';
 const HARDCODED_CID = '837338190227-tllb7sifh816u0p7mahs9e36it3lvqtf.apps.googleusercontent.com';
 const LS_META   = 'gjv_meta_v6';   // item metadata array
 const LS_CFG    = 'gjv_cfg_v6';    // config + PIN
@@ -985,26 +988,57 @@ function setupPWA() {
   // Show version
   const vEl = document.getElementById('app-ver');
   if (vEl) vEl.textContent = APP_VERSION;
+  const vb = document.getElementById('ver-badge');
+  if (vb) vb.textContent = 'v' + APP_VERSION;
+  const pvl = document.getElementById('pin-ver-lbl');
+  if (pvl) pvl.textContent = 'v' + APP_VERSION;
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').then(reg => {
       // Check for updates every 60 seconds when app is open
       setInterval(() => reg.update(), 60000);
 
-      // Listen for new SW taking over
+      // Smart 2-open update strategy:
+      // First open  → show banner (user can tap Update Now or ignore)
+      // Second open → auto-update silently + show 5-sec toast
+      function handleWaiting(waitingSW) {
+        const seen = localStorage.getItem('gjv_update_seen');
+        if (seen === APP_VERSION) {
+          // Second open — silently skip waiting
+          localStorage.removeItem('gjv_update_seen');
+          sessionStorage.setItem('gjv_just_updated', APP_VERSION);
+          waitingSW.postMessage({ type: 'SKIP_WAITING' });
+        } else {
+          // First open — show banner, set flag
+          showUpdateBanner();
+        }
+      }
+
+      // SW already waiting when page loaded
+      if (reg.waiting && navigator.serviceWorker.controller) {
+        handleWaiting(reg.waiting);
+      }
+
+      // New SW found while page is open
       reg.addEventListener('updatefound', () => {
         const newSW = reg.installing;
         newSW.addEventListener('statechange', () => {
           if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
-            showUpdateBanner();
+            handleWaiting(newSW);
           }
         });
       });
     }).catch(() => {});
 
-    // Listen for message from new SW
+    // SW activated — check if we triggered silent update, show toast
     navigator.serviceWorker.addEventListener('message', e => {
-      if (e.data && e.data.type === 'NEW_VERSION') showUpdateBanner();
+      if (e.data && e.data.type === 'NEW_VERSION') {
+        const justUpdated = sessionStorage.getItem('gjv_just_updated');
+        if (justUpdated) {
+          sessionStorage.removeItem('gjv_just_updated');
+          setTimeout(() => toast('✓ Updated to v' + APP_VERSION, 'ok', 5000), 800);
+        }
+      }
     });
   }
 
@@ -1019,6 +1053,9 @@ function setupPWA() {
 }
 
 function showUpdateBanner() {
+  // Mark this version as "seen" — second open will auto-update
+  localStorage.setItem('gjv_update_seen', APP_VERSION);
+
   // Use dedicated update bar so it stays visible and is always clickable
   let bar = document.getElementById('update-bar');
   if (!bar) {
@@ -1026,11 +1063,22 @@ function showUpdateBanner() {
     bar.id = 'update-bar';
     bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9998;background:var(--card);border-top:1px solid var(--acc);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,.4)';
     bar.innerHTML = '<span style="font-size:14px;color:var(--text)">&#9889; New version available</span>'
-      + '<button onclick="location.reload(true)" style="background:var(--acc);color:var(--bg);border:none;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:Jost,sans-serif;touch-action:manipulation;min-height:44px;min-width:110px">Update Now</button>';
+      + '<button onclick="doUpdate()" style="background:var(--acc);color:var(--bg);border:none;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:Jost,sans-serif;touch-action:manipulation;min-height:44px;min-width:110px">Update Now</button>';
     document.body.appendChild(bar);
   }
   bar.style.display = 'flex';
 }
+
+function doUpdate() {
+  // Tell SW to skip waiting, then reload
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' });
+    setTimeout(() => location.reload(true), 300);
+  } else {
+    location.reload(true);
+  }
+}
+
 function pwaInstall() {
   if (!pwaPrompt) return;
   pwaPrompt.prompt();
@@ -1152,12 +1200,12 @@ function renderStats() {
         locMetal[loc][m] += parseFloat(i.wt||0);
       });
       const locKeys = Object.keys(locMetal).sort();
-      lbar.innerHTML = locKeys.map(loc => {
+      lbar.innerHTML = '<div class="lmb-grid">' + locKeys.map(loc => {
         const chips = metalOrder.filter(m => locMetal[loc][m])
-          .map(m => '<div class="lmb-chip">' + (metalEmoji[m]||'') + ' ' + m + '<span>' + locMetal[loc][m].toFixed(1) + 'g</span></div>')
+          .map(m => '<div class="lmb-chip"><span class="lmb-chip-lbl">' + (metalEmoji[m]||'') + ' ' + m + '</span><span>' + locMetal[loc][m].toFixed(1) + 'g</span></div>')
           .join('');
-        return '<div class="lmb-row"><div class="lmb-loc">' + esc(loc) + '</div><div class="lmb-metals">' + chips + '</div></div>';
-      }).join('');
+        return '<div class="lmb-card"><div class="lmb-loc">' + esc(loc) + '</div><div class="lmb-metals">' + chips + '</div></div>';
+      }).join('') + '</div>';
     } else {
       lbar.innerHTML = '';
     }
