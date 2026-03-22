@@ -1,4 +1,4 @@
-const VER    = 'gjv-v6.3';
+const VER    = 'gjv-v6.8';
 const ASSETS = ['./index.html','./manifest.json','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 
 // Install — cache all assets, activate immediately
