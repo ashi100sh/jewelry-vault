@@ -19,7 +19,7 @@
 :root,[data-theme="dark"]{
   --bg:#0C0B08;--bg2:#131108;--card:#1A1810;--card2:#211F14;
   --border:#2E2A18;--border2:#3A3520;--input:#0F0E0A;
-  --text:#EAD9A0;--text2:#A89060;--text3:#706048;--muted:#3A3020;
+  --text:#EAD9A0;--text2:#C4A870;--text3:#9A8460;--muted:#6A5840;
   --acc:#C8960C;--acc2:#E8B020;--glow:rgba(200,150,12,.18);
   --pin-btn:#1C1A12;--overlay:rgba(0,0,0,.93);
   --shadow:0 16px 48px rgba(0,0,0,.72);
@@ -27,19 +27,19 @@
   --stat:linear-gradient(135deg,#1C1A12,#171508);
 }
 [data-theme="pearl"]{
-  --bg:#F5F0E8;--bg2:#EDE8DC;--card:#FEFBF4;--card2:#F5F0E4;
-  --border:#E0D8C4;--border2:#CFC5A8;--input:#EDE8DC;
-  --text:#1E180A;--text2:#5A4820;--text3:#8A7848;--muted:#C8B888;
-  --acc:#9A7208;--acc2:#C09010;--glow:rgba(154,114,8,.14);
+  --bg:#F5F0E8;--bg2:#EAE4D6;--card:#FEFCF6;--card2:#F2ECD8;
+  --border:#D8CEBC;--border2:#C4B898;--input:#EDE8DC;
+  --text:#1A1408;--text2:#3E3010;--text3:#5C4E28;--muted:#9A8858;
+  --acc:#8A6408;--acc2:#B08010;--glow:rgba(138,100,8,.16);
   --pin-btn:#EDE8DC;--overlay:rgba(20,15,5,.88);
-  --shadow:0 12px 36px rgba(80,60,10,.16);
-  --hero:linear-gradient(155deg,#EDE8DC 0%,#F5F0E4 60%,#E8E0CC 100%);
-  --stat:linear-gradient(135deg,#FDFAF2,#F0EBE0);
+  --shadow:0 12px 36px rgba(80,60,10,.18);
+  --hero:linear-gradient(155deg,#E8E0CC 0%,#F0EAD8 60%,#E4DCC8 100%);
+  --stat:linear-gradient(135deg,#FAF6EC,#EDE6D4);
 }
 [data-theme="rose"]{
   --bg:#180D10;--bg2:#200F14;--card:#251520;--card2:#2E1C28;
   --border:#3C2430;--border2:#4A2E3C;--input:#160B0F;
-  --text:#F0D5DA;--text2:#C09098;--text3:#7A5060;--muted:#4A2E38;
+  --text:#F0D5DA;--text2:#D0A8B0;--text3:#A07888;--muted:#7A5060;
   --acc:#D4788A;--acc2:#E898A8;--glow:rgba(212,120,138,.18);
   --pin-btn:#201018;--overlay:rgba(8,3,6,.92);
   --shadow:0 16px 48px rgba(0,0,0,.72);
@@ -90,18 +90,18 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .app-hero{background:var(--hero);padding:clamp(16px,4vw,26px) clamp(16px,4.5vw,26px) clamp(14px,3.5vw,20px);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
 .app-hero::after{content:'\2726';position:absolute;right:clamp(10px,3vw,20px);top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(60px,14vw,90px);color:var(--glow);pointer-events:none}
 .hero-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
-.hero-eye{font-size:clamp(12px,2.8vw,13px);letter-spacing:4px;text-transform:uppercase;color:var(--acc);margin-bottom:5px}
+.hero-eye{font-size:clamp(11px,2.6vw,12px);letter-spacing:4px;text-transform:uppercase;color:var(--acc);margin-bottom:6px;font-weight:500}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5.5vw,30px);font-weight:300;color:var(--text);line-height:1.1}
 .hero-title em{color:var(--acc);font-style:italic}
-.hero-sub{font-size:clamp(12px,2.8vw,13px);letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-top:4px}
+.hero-sub{font-size:clamp(11px,2.5vw,12px);letter-spacing:2.5px;text-transform:uppercase;color:var(--text2);margin-top:6px;opacity:.85}
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .hero-themes{display:flex;gap:8px}
-.hero-btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.btn{background:none;border:1px solid var(--border2);border-radius:10px;color:var(--text3);font-size:clamp(12px,2.8vw,13px);padding:clamp(8px,2.2vw,11px) clamp(11px,3vw,15px);cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;white-space:nowrap;transition:all .18s;-webkit-appearance:none;min-height:38px}
+.hero-btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.hero-btns .btn{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:var(--text)}.hero-btns .btn:hover,.hero-btns .btn:active{background:rgba(255,255,255,.12);border-color:var(--acc);color:var(--acc)}.hero-btns .btn.danger{border-color:rgba(255,255,255,.18)}.hero-btns .btn.danger:hover{border-color:#E07070;color:#E07070}[data-theme='pearl'] .hero-btns .btn{background:rgba(0,0,0,.07);border-color:rgba(0,0,0,.18);color:var(--text2)}[data-theme='pearl'] .hero-btns .btn:hover{background:rgba(0,0,0,.1);border-color:var(--acc);color:var(--acc)}
+.btn{background:var(--card);border:1px solid var(--border2);border-radius:10px;color:var(--text2);font-size:clamp(12px,2.8vw,13px);padding:clamp(8px,2.2vw,11px) clamp(11px,3vw,15px);cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;white-space:nowrap;transition:all .18s;-webkit-appearance:none;min-height:38px}
 .btn:hover,.btn:active{border-color:var(--acc);color:var(--acc)}
 .btn.primary{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:600}
 .btn.primary:hover{background:var(--acc2);border-color:var(--acc2)}
-.btn.danger:hover,.btn.danger:active{border-color:#E07070;color:#E07070}
+.btn.danger:hover,.btn.danger:active{border-color:#E07070;color:#E07070}.btn-icon{width:44px;height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;min-height:44px}
 .btn.on{border-color:rgba(90,154,74,.5)!important;color:#6ABA5A!important}
 
 /* ═══ STATS ═══ */
@@ -112,37 +112,37 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
   .sc:nth-child(3){border-top:1px solid var(--border)}
   .sc:nth-child(4){border-top:1px solid var(--border);border-right:none}
 }
-.sc{padding:clamp(14px,3.8vw,20px) clamp(12px,3.5vw,16px);background:var(--stat);border-right:1px solid var(--border);position:relative;overflow:hidden}
-.sc:last-child{border-right:none}
+.sc{padding:clamp(16px,4vw,22px) clamp(14px,4vw,20px) clamp(16px,4vw,22px) clamp(16px,4vw,20px);background:var(--stat);border-right:1px solid var(--border);position:relative;overflow:hidden;border-left:3px solid transparent}
+.sc:last-child{border-right:none}.sc:first-child{border-left-color:var(--acc)}.sc:last-child{border-left-color:var(--acc)}
 .sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:0;transition:opacity .3s}
 .sc:hover::after{opacity:1}
-.sc-lbl{font-size:clamp(12px,2.8vw,13px);letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:5px}
-.sc-val{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,5vw,26px);color:var(--acc);line-height:1}#metal-wt-bar{display:flex;border-bottom:1px solid var(--border);min-height:0}#metal-wt-bar:empty{display:none}.mw-cell{flex:1;padding:clamp(10px,3vw,14px) clamp(12px,3.5vw,16px);background:var(--stat);border-right:1px solid var(--border);position:relative;overflow:hidden}.mw-cell:last-child{border-right:none}.mw-lbl{font-size:clamp(11px,2.6vw,12px);letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:4px}.mw-val{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,4.5vw,22px);color:var(--acc);line-height:1;margin-bottom:2px}.mw-sub{font-size:clamp(10px,2.4vw,11px);color:var(--text3)}.mw-icon{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:22px;opacity:.15}
+.sc-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:8px;font-weight:500}
+.sc-val{font-family:'Jost',sans-serif;font-size:clamp(24px,5.8vw,32px);font-weight:300;color:var(--acc);line-height:1;letter-spacing:-0.5px}#metal-wt-bar{display:flex;border-bottom:1px solid var(--border);min-height:0}#metal-wt-bar:empty{display:none}.mw-cell{flex:1;padding:clamp(10px,3vw,14px) clamp(12px,3.5vw,16px) clamp(10px,3vw,14px) clamp(13px,3.5vw,17px);background:var(--stat);border-right:1px solid var(--border);position:relative;overflow:hidden;border-left:3px solid transparent}.mw-cell:last-child{border-right:none}.mw-cell:nth-child(1){border-left-color:#C8960C}.mw-cell:nth-child(2){border-left-color:#A8B8C8}.mw-cell:nth-child(3){border-left-color:var(--acc2)}.mw-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:5px;font-weight:500}.mw-val{font-family:'Jost',sans-serif;font-size:clamp(19px,5vw,23px);font-weight:300;color:var(--acc);line-height:1;margin-bottom:3px;letter-spacing:-0.5px}.mw-sub{font-size:clamp(11px,2.6vw,12px);color:var(--text2)}.mw-icon{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:22px;opacity:.15}#loc-metal-bar{border-bottom:1px solid var(--border)}#loc-metal-bar:empty{display:none}.lmb-row{display:flex;align-items:stretch;border-bottom:0.5px solid var(--border)}.lmb-row:last-child{border-bottom:none}.lmb-loc{padding:8px 12px;font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;min-width:90px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;border-right:1px solid var(--border);background:var(--stat)}.lmb-metals{display:flex;flex:1;flex-wrap:wrap}.lmb-chip{padding:6px 10px;font-size:12px;color:var(--text3);border-right:0.5px solid var(--border)}.lmb-chip span{font-size:13px;font-weight:600;color:var(--acc);margin-left:3px}
 
 /* ═══ SYNC STATUS BAR ═══ */
-#sync-bar{padding:6px clamp(16px,4vw,24px);background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:32px}
+#sync-bar{padding:7px clamp(16px,4vw,24px);background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;min-height:34px}
 .sync-dot{width:8px;height:8px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .3s}
 .sync-dot.ok{background:#5A9A4A}
 .sync-dot.busy{background:var(--acc);animation:blink 1s infinite}
 .sync-dot.err{background:#C06060}
 .sync-dot.warn{background:#C0A020}
-#sync-msg{font-size:13px;color:var(--text3)}
-#sync-time{font-size:12px;color:var(--muted);margin-left:auto}
+#sync-msg{font-size:14px;color:var(--text2)}
+#sync-time{font-size:12px;color:var(--text3);margin-left:auto}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 
 /* ═══ FILTER PANEL ═══ */
-.filter-panel{background:var(--bg2);border-bottom:1px solid var(--border);padding:clamp(11px,3vw,15px) clamp(16px,4vw,24px);display:flex;flex-direction:column;gap:9px}
-.filter-row{display:flex;align-items:center;gap:10px}
-.filter-lbl{font-size:clamp(12px,2.8vw,13px);letter-spacing:2px;text-transform:uppercase;color:var(--text3);min-width:62px;flex-shrink:0}
+.filter-panel{background:var(--bg2);border-bottom:1px solid var(--border);padding:clamp(12px,3vw,16px) clamp(16px,4vw,24px) clamp(8px,2vw,12px);display:flex;flex-direction:column;gap:8px}
+.filter-row{display:flex;align-items:center;gap:10px;min-height:40px}
+.filter-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);min-width:62px;flex-shrink:0;font-weight:500}
 .chips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex:1;padding-bottom:2px}
 .chips::-webkit-scrollbar{display:none}
-.chip{background:none;border:1px solid var(--border);border-radius:20px;color:var(--text3);font-size:clamp(13px,3.2vw,14px);padding:7px clamp(13px,3.2vw,17px);cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;white-space:nowrap;transition:all .18s;flex-shrink:0;min-height:40px;display:flex;align-items:center}
-.chip.active{border-color:var(--acc);color:var(--acc);background:var(--card)}
+.chip{background:none;border:1px solid var(--border2);border-radius:20px;color:var(--text2);font-size:clamp(13px,3.2vw,14px);padding:7px clamp(12px,3vw,16px);cursor:pointer;font-family:'Jost',sans-serif;touch-action:manipulation;white-space:nowrap;transition:all .18s;flex-shrink:0;min-height:38px;display:flex;align-items:center}
+.chip.active{border-color:var(--acc);color:var(--acc);background:var(--card);font-weight:600;border-width:1.5px}
 .chip.gchip.active{border-color:#C8960C;color:#C8960C;background:rgba(200,150,12,.08)}
 .chip.schip.active{border-color:#A8B8C8;color:#A8B8C8;background:rgba(168,184,200,.08)}
 
 /* ═══ TOOLBAR ═══ */
-.toolbar{display:flex;align-items:center;justify-content:space-between;padding:clamp(11px,3vw,15px) clamp(16px,4vw,24px);border-bottom:1px solid var(--border);background:var(--bg2);gap:8px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;padding:clamp(10px,2.8vw,14px) clamp(16px,4vw,24px);border-bottom:1px solid var(--border);background:var(--bg2);gap:8px}
 .toolbar-left{display:flex;align-items:center;gap:8px;min-width:0}
 #filter-count{font-size:13px;color:var(--text3);white-space:nowrap;flex-shrink:0}
 
@@ -164,13 +164,13 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 .img-sz{position:absolute;bottom:8px;right:8px;z-index:1;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);color:#888;font-size:11px;padding:3px 8px;border-radius:6px}
 .loc-badge{position:absolute;bottom:8px;left:8px;z-index:1;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);color:#ccc;font-size:11px;padding:4px 9px;border-radius:6px;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card-body{padding:clamp(13px,3.8vw,16px)}
-.card-name{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,4.2vw,20px);color:var(--text);margin-bottom:6px;line-height:1.25}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,4.4vw,21px);color:var(--text);margin-bottom:6px;line-height:1.25}
 .card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
-.tag{background:var(--card2);border:1px solid var(--border);border-radius:6px;font-size:clamp(12px,2.8vw,13px);color:var(--text3);padding:3px 8px}
+.tag{background:var(--card2);border:1px solid var(--border2);border-radius:6px;font-size:clamp(11px,2.6vw,12px);color:var(--text2);padding:3px 9px;font-weight:500}
 .tag.ktag{color:var(--acc);border-color:var(--border2)}
 .tag.stag{color:#A8B8C8;border-color:rgba(168,184,200,.3)}
 .card-price{font-family:'Cormorant Garamond',serif;font-size:clamp(15px,4vw,18px);color:var(--acc)}
-.card-detail{font-size:clamp(12px,2.8vw,13px);color:var(--text3);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-detail{font-size:clamp(13px,3vw,14px);color:var(--text3);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card-divider{height:1px;background:var(--border);margin:clamp(9px,2.5vw,12px) 0}
 .card-actions{display:flex;gap:7px}
 .act{flex:1;background:none;border:1px solid var(--border);border-radius:9px;color:var(--text3);font-size:clamp(12px,2.8vw,13px);padding:clamp(9px,2.4vw,11px) 3px;cursor:pointer;font-family:'Jost',sans-serif;transition:all .15s;touch-action:manipulation;display:flex;align-items:center;justify-content:center;gap:3px;min-height:40px}
@@ -192,16 +192,16 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
 @media(min-width:620px){.modal{border-radius:24px;max-height:88vh}}
 .modal-handle{width:40px;height:4px;background:var(--border2);border-radius:2px;margin:0 auto 20px}
 .modal-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
-.modal-eye{font-size:clamp(12px,2.8vw,13px);letter-spacing:3px;text-transform:uppercase;color:var(--acc);margin-bottom:5px}
+.modal-eye{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);margin-bottom:6px;font-weight:600}
 .modal-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,6vw,32px);font-weight:300;color:var(--text)}
-.modal-sub{font-size:clamp(12px,2.8vw,13px);color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
+.modal-sub{font-size:clamp(12px,2.8vw,13px);color:var(--text2);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
 .close-x{background:none;border:1px solid var(--border);border-radius:9px;color:var(--text3);font-size:16px;padding:8px 14px;cursor:pointer;line-height:1;flex-shrink:0;touch-action:manipulation;transition:all .15s;min-height:40px}
 .close-x:hover{border-color:var(--text2);color:var(--text)}
 
 /* ═══ FORM ═══ */
 .field{margin-bottom:clamp(14px,3.5vw,18px)}
 .field-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.field-lbl{font-size:clamp(13px,3vw,14px);color:var(--text3);letter-spacing:2px;text-transform:uppercase}
+.field-lbl{font-size:clamp(13px,3vw,14px);color:var(--text2);letter-spacing:1.5px;text-transform:uppercase}
 .field input,.field select,.field textarea{width:100%;background:var(--input);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:'Jost',sans-serif;font-size:clamp(15px,3.5vw,16px);padding:clamp(12px,3vw,14px) clamp(13px,3.5vw,16px);outline:none;-webkit-appearance:none;transition:border-color .2s,box-shadow .2s;min-height:48px}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--glow)}
 .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
@@ -383,12 +383,12 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
           <div class="tdot td-rose"  id="ta-rose"  onclick="setTheme('rose')"></div>
         </div>
         <div class="hero-btns">
-          <button class="btn" id="drive-btn" onclick="openSettings('drive')" title="Google Drive">&#9729;</button>
+          <button class="btn btn-icon" id="drive-btn" onclick="openSettings('drive')" title="Google Drive">&#9729;</button>
           <button class="btn" onclick="openGallery()" title="Photo Gallery">&#128247; Gallery</button>
           <button class="btn" onclick="openBills()" title="All Bills">&#128196; Bills</button>
-          <button class="btn" onclick="openSettings('backup')" title="Backup">&#128190;</button>
-          <button class="btn" onclick="openSettings('main')" title="Settings">&#9881;</button>
-          <button class="btn danger" onclick="lockApp()" title="Lock">&#128274;</button>
+          <button class="btn btn-icon" onclick="openSettings('backup')" title="Backup">&#128190;</button>
+          <button class="btn btn-icon" onclick="openSettings('main')" title="Settings">&#9881;</button>
+          <button class="btn btn-icon danger" onclick="lockApp()" title="Lock">&#128274;</button>
         </div>
       </div>
     </div>
@@ -408,6 +408,8 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
   </div>
   <!-- Metal weight breakdown -->
   <div id="metal-wt-bar"></div>
+  <!-- Per-location metal breakdown -->
+  <div id="loc-metal-bar"></div>
 
   <!-- 3-axis filter -->
   <div class="filter-panel">
@@ -436,7 +438,14 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
   <!-- Toolbar -->
   <div class="toolbar">
     <div class="toolbar-left">
-      <button class="btn" onclick="clearFilters()" style="padding:6px 10px;font-size:10px">&#10005; Clear</button>
+      <button class="btn" onclick="clearFilters()" style="padding:6px 14px;font-size:13px;border-color:var(--border2)">&#10005; Clear</button>
+      <select id="grid-sort" onchange="fSort=this.value;renderGrid()" style="background:var(--card);border:1px solid var(--border2);border-radius:20px;color:var(--text2);padding:6px 14px;font-size:13px;font-family:'Jost',sans-serif;font-weight:500;min-height:36px;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;padding-right:28px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 10px center">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="name">Name A–Z</option>
+        <option value="weight">Heaviest First</option>
+        <option value="value">Highest Value</option>
+      </select>
       <span id="filter-count"></span>
     </div>
     <button class="btn primary" onclick="openItem()">&#65291; Add Jewelry</button>
@@ -492,7 +501,8 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
       <select id="f-type">
         <option>Necklace</option><option>Bangles</option><option>Ring</option>
         <option>Earrings</option><option>Chain</option><option>Anklet</option>
-        <option>Bracelet</option><option>Pendant</option><option>Brooch</option><option>Other</option>
+        <option>Bracelet</option><option>Pendant</option><option>Brooch</option>
+        <option>Coin</option><option>Bar</option><option>Other</option>
       </select>
     </div>
     <div class="field">
@@ -567,7 +577,8 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
     </div>
     <button class="close-x" onclick="closeOv('ov-gallery')">&#10005;</button>
   </div>
-  <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px" id="gal-chips"></div>
+  <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px" id="gal-chips"></div>
+  <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px" id="gal-loc-chips"></div>
   <div class="gallery-grid" id="gal-grid"></div>
 </div>
 </div>
@@ -612,10 +623,11 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
       <button class="chip" id="bt-loc"   onclick="setBillTab('loc')"  style="flex-shrink:0">&#128205; Has Location</button>
     </div>
     <select id="bills-sort" onchange="renderBillList()" style="background:var(--input);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:6px 10px;font-family:'Jost',sans-serif;font-size:13px;flex-shrink:0">
-      <option value="date">&#128197; By Date</option>
-      <option value="name">&#65380; By Name</option>
-      <option value="price">&#8377; By Value</option>
-      <option value="metal">&#129351; By Metal</option>
+      <option value="date">Date</option>
+      <option value="name">Name A–Z</option>
+      <option value="price">Highest Value</option>
+      <option value="metal">By Metal</option>
+      <option value="weight">Heaviest First</option>
     </select>
   </div>
   <div class="bill-list" id="bill-list"></div>
@@ -721,7 +733,7 @@ body{min-height:100%;background:var(--bg);font-family:'Jost',sans-serif;color:va
    ============================================================= */
 
 // ── CONSTANTS ──────────────────────────────────────────────
-const APP_VERSION   = '6.3';
+const APP_VERSION   = '6.8';
 const HARDCODED_CID = '837338190227-tllb7sifh816u0p7mahs9e36it3lvqtf.apps.googleusercontent.com';
 const LS_META   = 'gjv_meta_v6';   // item metadata array
 const LS_CFG    = 'gjv_cfg_v6';    // config + PIN
@@ -735,10 +747,10 @@ const DRIVE_TEMP        = 'jewelry_vault_TEMP.json';
 const DRIVE_FOLDER_NAME = 'Jewelry Vault';
 const LS_FOLDER         = 'gjv_folderid';
 
-const JTYPES = ['Necklace','Bangles','Ring','Earrings','Chain','Anklet','Bracelet','Pendant','Brooch','Other'];
+const JTYPES = ['Necklace','Bangles','Ring','Earrings','Chain','Anklet','Bracelet','Pendant','Brooch','Coin','Bar','Other'];
 const EMO    = {Necklace:'\u{1F4FF}',Bangles:'\u{1F49B}',Ring:'\u{1F48D}',Earrings:'\u2728',
                 Chain:'\u26D3\uFE0F',Anklet:'\u{1F517}',Bracelet:'\u{1FA6C}',
-                Pendant:'\u{1F52E}',Brooch:'\u{1F338}',Other:'\u{1F3C5}'};
+                Pendant:'\u{1F52E}',Brooch:'\u{1F338}',Coin:'\u{1FA99}',Bar:'\u{1F4B0}',Other:'\u{1F3C5}'};
 const GK = ['22K','24K','18K','14K','Other / Unknown'];
 const SK = ['Sterling 925','Silver 999','Silver 800','Other / Unknown'];
 const OK = ['Other / Unknown','22K','24K','18K','Sterling 925'];
@@ -755,8 +767,8 @@ let curBill  = null;      // Bill file Blob being edited
 let curBillMeta = null;   // { name, mimeType, size }
 let curMeta  = null;      // { size } for display
 let curMetal = 'Gold';
-let fMetal = 'All', fType = 'All', fLoc = 'All', fPhoto = 'All', fBill = 'All';
-let lbItems  = [], lbIdx  = 0, galFilter = 'All', galPhotoItems = [];
+let fMetal = 'All', fType = 'All', fLoc = 'All', fPhoto = 'All', fBill = 'All', fSort = 'newest';
+let lbItems  = [], lbIdx  = 0, galFilter = 'All', galLocFilter = 'All', galPhotoItems = [];
 let driveOn  = false, driveToken = null, driveFileIds = {}, driveFolderId = null;
 let gapiOk   = false, tokenClient = null;
 let pwaPrompt = null;
@@ -951,7 +963,7 @@ window.onload = async () => {
   // Load config
   try { cfg = JSON.parse(localStorage.getItem(LS_CFG) || '{}'); } catch {}
   userPin = cfg.pin || '1234';
-  setTheme(cfg.theme || 'dark', false);
+  setTheme(cfg.theme || 'pearl', false);
   setupPWA();
 
   // Open IndexedDB
@@ -1125,6 +1137,31 @@ function renderStats() {
         + '</div>';
     }).join('');
   }
+
+  // Per-location metal breakdown
+  const lbar = document.getElementById('loc-metal-bar');
+  if (lbar) {
+    const allLocs = getLocs();
+    if (allLocs.length >= 2) {
+      const locMetal = {};
+      items.forEach(i => {
+        const loc = i.loc || '(No location)';
+        const m   = i.metal || 'Gold';
+        if (!locMetal[loc]) locMetal[loc] = {};
+        if (!locMetal[loc][m]) locMetal[loc][m] = 0;
+        locMetal[loc][m] += parseFloat(i.wt||0);
+      });
+      const locKeys = Object.keys(locMetal).sort();
+      lbar.innerHTML = locKeys.map(loc => {
+        const chips = metalOrder.filter(m => locMetal[loc][m])
+          .map(m => '<div class="lmb-chip">' + (metalEmoji[m]||'') + ' ' + m + '<span>' + locMetal[loc][m].toFixed(1) + 'g</span></div>')
+          .join('');
+        return '<div class="lmb-row"><div class="lmb-loc">' + esc(loc) + '</div><div class="lmb-metals">' + chips + '</div></div>';
+      }).join('');
+    } else {
+      lbar.innerHTML = '';
+    }
+  }
 }
 
 function renderFilters() {
@@ -1141,9 +1178,10 @@ function renderFilters() {
   ).join('');
 
   const locs = ['All',...getLocs()];
+  const hasNoLoc = items.some(i => !i.loc);
   document.getElementById('chips-loc').innerHTML = locs.map(l =>
     `<button class="chip${l===fLoc?' active':''}" onclick="setF('loc','${esc(l)}')">${l==='All'?'All Locations':'\u{1F4CD} '+esc(l)}</button>`
-  ).join('');
+  ).join('') + (hasNoLoc ? `<button class="chip${fLoc==='__none__'?' active':''}" onclick="setF('loc','__none__')">\u{1F4CD} None</button>` : '');
 
   // Photo filter row — always visible
   const anyPhoto = items.some(i=>i.hasPhoto);
@@ -1170,28 +1208,36 @@ function setF(ax, v) {
   else if (ax==='bill')  fBill  = v;
   renderFilters(); renderGrid();
 }
-function clearFilters() { fMetal='All'; fType='All'; fLoc='All'; fPhoto='All'; fBill='All'; renderFilters(); renderGrid(); }
+function clearFilters() { fMetal='All'; fType='All'; fLoc='All'; fPhoto='All'; fBill='All'; fSort='newest'; renderFilters(); renderGrid(); }
 function getFiltered() {
   return items.filter(i =>
     (fMetal==='All'  || i.metal===fMetal)   &&
     (fType==='All'   || i.type===fType)     &&
-    (fLoc==='All'    || i.loc===fLoc)       &&
+    (fLoc==='All'    || (fLoc==='__none__' ? !i.loc : i.loc===fLoc)) &&
     (fPhoto==='All'  || (fPhoto==='yes' ? i.hasPhoto : !i.hasPhoto)) &&
     (fBill==='All'   || (fBill==='yes'  ? (i.hasBill||!!i.bill) : (!i.hasBill&&!i.bill)))
   );
 }
 
 function renderGrid() {
-  const list = getFiltered();
+  let list = getFiltered();
+  // Apply grid sort
+  const gs = document.getElementById('grid-sort');
+  if (gs) gs.value = fSort;
+  if (fSort==='newest')  list = [...list].sort((a,b) => Number(b.id||0)-Number(a.id||0));
+  if (fSort==='oldest')  list = [...list].sort((a,b) => Number(a.id||0)-Number(b.id||0));
+  if (fSort==='name')    list = [...list].sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  if (fSort==='weight')  list = [...list].sort((a,b) => Number(b.wt||0)-Number(a.wt||0));
+  if (fSort==='value')   list = [...list].sort((a,b) => Number(b.price||0)-Number(a.price||0));
   const grid = document.getElementById('grid');
   const fc   = document.getElementById('filter-count');
-  const anyFilter = fMetal!=='All'||fType!=='All'||fLoc!=='All'||fPhoto!=='All'||fBill!=='All';
+  const anyFilter = fMetal!=='All'||fType!=='All'||(fLoc!=='All')||fPhoto!=='All'||fBill!=='All';
   fc.textContent = anyFilter ? `Showing ${list.length} of ${items.length}` : '';
 
   if (!list.length) {
     grid.innerHTML = `<div class="empty">
       <div class="empty-ring">${items.length===0?'\u{1F48D}':fMetal==='Silver'?'\u{1F948}':'\u{1F947}'}</div>
-      <div class="empty-title">${items.length===0?'Your vault is empty':(fMetal!=='All'||fType!=='All'||fLoc!=='All'||fPhoto!=='All'||fBill!=='All')?'No items match filters':'Your vault is empty'}</div>
+      <div class="empty-title">${items.length===0?'Your vault is empty':(fMetal!=='All'||fType!=='All'||(fLoc!=='All')||fPhoto!=='All'||fBill!=='All')?'No items match filters':'Your vault is empty'}</div>
       <div class="empty-sub">${items.length===0?'Tap \u201c\uFF0B Add Jewelry\u201d to begin':'Try clearing the filters'}</div>
     </div>`;
     return;
@@ -1526,24 +1572,45 @@ async function dlPhoto(id) {
 // ── GALLERY ─────────────────────────────────────────────────
 function openGallery() {
   galFilter = 'All';
+  galLocFilter = 'All';
   renderGallery();
   openOv('ov-gallery');
 }
 
 function renderGallery() {
   const all  = [...items];
-  const pics = all.filter(i => galFilter==='All' || (i.metal||'Gold')===galFilter);
+  const pics = all.filter(i =>
+    (galFilter==='All'    || (i.metal||'Gold')===galFilter) &&
+    (galLocFilter==='All' || (galLocFilter==='__none__' ? !i.loc : i.loc===galLocFilter))
+  );
   const photoCount = pics.filter(i=>i.hasPhoto).length;
   document.getElementById('gal-sub').textContent =
     pics.length + ' item' + (pics.length!==1?'s':'') +
     (photoCount < pics.length ? ' · ' + photoCount + ' with photo' : '');
 
+  // Metal chips
   const gMs = ['All',...[...new Set(all.map(i=>i.metal||'Gold'))]];
   document.getElementById('gal-chips').innerHTML = gMs.map(m =>
     `<button class="chip${m===galFilter?' active':''}" onclick="galF('${m}')">${
       m==='All'?'All':m==='Gold'?'🥇 Gold':m==='Silver'?'🥈 Silver':'💠 Other'
     }</button>`
   ).join('');
+
+  // Location chips
+  const galLocs = [...new Set(all.map(i=>i.loc).filter(Boolean))].sort();
+  const hasNoLoc = all.some(i=>!i.loc);
+  const locChips = ['All', ...galLocs];
+  const locEl = document.getElementById('gal-loc-chips');
+  if (locEl) {
+    locEl.style.display = galLocs.length === 0 ? 'none' : 'flex';
+    locEl.innerHTML = locChips.map(l =>
+      `<button class="chip${l===galLocFilter?' active':''}" onclick="galLocF('${esc(l)}')">${
+        l==='All'?'All Loc':'📍 '+esc(l)
+      }</button>`
+    ).join('') + (hasNoLoc
+      ? `<button class="chip${galLocFilter==='__none__'?' active':''}" onclick="galLocF('__none__')">📍 None</button>`
+      : '');
+  }
 
   if (!pics.length) {
     document.getElementById('gal-grid').innerHTML = '<div class="no-bills">No items yet</div>';
@@ -1578,13 +1645,13 @@ function renderGallery() {
     + '</div>';
   }).join('');
 
-  loadGalleryPhotos(pics, galFilter);
+  loadGalleryPhotos(pics, galFilter, galLocFilter);
 }
 
-async function loadGalleryPhotos(pics, filterAtLoad) {
+async function loadGalleryPhotos(pics, filterAtLoad, filterLocAtLoad) {
   for (const it of pics) {
     if (!it.hasPhoto) continue;
-    if (galFilter !== filterAtLoad) break;
+    if (galFilter !== filterAtLoad || galLocFilter !== filterLocAtLoad) break;
     const img = document.querySelector('#galph-' + it.id + ' img[data-id]');
     if (!img) continue;
     try {
@@ -1598,7 +1665,8 @@ async function loadGalleryPhotos(pics, filterAtLoad) {
   }
 }
 
-function galF(v) { galFilter = v; renderGallery(); }
+function galF(v)    { galFilter    = v; renderGallery(); }
+function galLocF(v) { galLocFilter = v; renderGallery(); }
 
 async function openLB(idx) {
   lbItems = galPhotoItems;
@@ -1710,9 +1778,10 @@ function renderBillList() {
 
   const sort = document.getElementById('bills-sort');
   const sv   = sort ? sort.value : 'date';
-  if (sv==='date')  list.sort((a,b) => (b.date||'').localeCompare(a.date||''));
-  if (sv==='name')  list.sort((a,b) => (a.name||'').localeCompare(b.name||''));
-  if (sv==='price') list.sort((a,b) => Number(b.price||0)-Number(a.price||0));
+  if (sv==='date')   list.sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  if (sv==='name')   list.sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  if (sv==='price')  list.sort((a,b) => Number(b.price||0)-Number(a.price||0));
+  if (sv==='weight') list.sort((a,b) => Number(b.wt||0)-Number(a.wt||0));
   if (sv==='metal') list.sort((a,b) => (a.metal||'').localeCompare(b.metal||''));
 
   document.getElementById('bills-sub').textContent =
